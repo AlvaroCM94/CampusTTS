@@ -1,0 +1,152 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addMat{{ idCurso }}">Añadir Material</button><br>
+
+<div class="collapse" id="addMat{{ idCurso }}">
+    
+    <form action="addmatcurso" method="post">
+
+        <input type="text" name="id" id="inputid" value="{{ idCurso }}" class="form-control" hidden><br>
+
+        <label for="inputTitulo">Título</label>
+        <input type="text" name="titulo" id="inputTitulo" class="form-control" required><br>
+
+        <label for="inputEnlace">Enlace</label>
+        <input type="text" name="enlace" id="inputEnlace" class="form-control" required><br>
+
+        <label for="inputTema">Tema</label>
+        <input type="number" name="tema" id="inputTema" class="form-control" required><br>
+
+        <label for="inputDesc">Descripción</label>
+        <textarea class="form-control" rows="5" id="inputDesc" name="desc" required></textarea><br>
+
+        <input class="form-check-input" type="checkbox" id="visibilidad" name="visibilidad" value="no">
+        <label class="form-check-label" for="visibilidad">Visibilidad</label><br><br>
+
+        <label for="inputTipo">Tipo</label>
+        <select type="text" name="tipo" id="inputTipo" class="form-control" required>
+            <option value="imagen">Imagen</option>
+            <option value="video">Vídeo</option>
+            <option value="pdf">PDF</option>
+            <option value="bp">BluePrint</option>
+            <option value="word">Word</option>
+            <option value="excel">Excel</option>
+            <option value="otros">Otros</option>
+        </select><br>
+
+        <button type="submit" class="btn btn-lg btn-success"> Añadir </button>
+
+    </form>
+
+</div><br>
+
+{% if mats == null %}
+
+    <p>Este curso no tiene materiales.</p>
+
+{% else %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Enlace</th>
+                    <th>Tema</th>
+                    <th>Descripción</th>
+                    <th>Visiblidad</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mat in mats %}
+                    <tr >
+                        <td>{{ mat.titulo }}</td>
+                        <td>{{ mat.enlace }}</td>
+                        <td>{{ mat.tema }}</td>
+                        <td>{{ mat.descripcion }}</td>
+                        <td>{{ mat.visibilidad }}</td>
+                        <td>{{ mat.tipo }}</td>
+
+                        <td>
+
+                            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#editMat{{ mat.id }}">Editar</button><br><br>
+                                                    
+                            <div class="collapse" id="editMat{{ mat.id }}">
+                                
+                                <form action="editmatcurso" method="post">
+
+                                    <input type="text" name="id" id="inputid" value="{{ mat.id }}" class="form-control" hidden><br>
+
+                                    <label for="inputTitulo">Título</label>
+                                    <input type="text" name="titulo" id="inputTitulo" value="{{ mat.titulo }}" class="form-control" required><br>
+
+                                    <label for="inputEnlace">Enlace</label>
+                                    <input type="text" name="enlace" id="inputEnlace" value="{{ mat.enlace }}" class="form-control" required><br>
+
+                                    <label for="inputTema">Tema</label>
+                                    <input type="number" name="tema" id="inputTema" value="{{ mat.tema }}" class="form-control" required><br>
+
+                                    <label for="inputDesc">Descripción</label>
+                                    <textarea class="form-control" rows="5" id="inputDesc" name="desc" required>{{ mat.descripcion }}</textarea><br>
+                                    
+                                    {% if mat.visibilidad == 1 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="visibilidad" name="visibilidad" value="yes" checked>
+                                            <label class="form-check-label" for="visibilidad">Visibilidad</label><br><br>
+                                        </div>
+
+                                    {% elseif mat.visibilidad == 0 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="visibilidad" name="visibilidad" value="no" unchecked>
+                                            <label class="form-check-label" for="visibilidad">Visibilidad</label><br><br>
+                                        </div>
+
+                                    {% endif %}
+
+                                    <label for="inputTipo">Tipo</label>
+                                    <select type="text" name="tipo" id="inputTipo" class="form-control" required>
+                                        <option value="{{ mat.tipo }}">{{ mat.tipo }}</option>
+                                        <option value="imagen">Imagen</option>
+                                        <option value="video">Vídeo</option>
+                                        <option value="pdf">PDF</option>
+                                        <option value="bp">BluePrint</option>
+                                        <option value="word">Word</option>
+                                        <option value="excel">Excel</option>
+                                        <option value="otros">Otros</option>
+                                    </select><br>
+
+
+                                    <button type="submit" class="btn btn-lg btn-warning"> Editar </button>
+
+                                </form>
+
+                            </div><br>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#deleteMat{{ mat.id }}">Eliminar</button><br><br>
+                                                    
+                            <div class="collapse" id="deleteMat{{ mat.id }}">
+                                
+                                <form action="deletematcurso" method="post">
+
+                                    <input type="text" name="id" id="inputid" value="{{ mat.id }}" class="form-control" hidden>
+
+                                    <button type="submit" class="btn btn-lg btn-danger"> Eliminar </button>
+
+                                </form>
+
+                            </div><br>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endif %}
+
+

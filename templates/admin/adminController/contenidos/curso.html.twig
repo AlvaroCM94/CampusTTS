@@ -1,0 +1,423 @@
+<div class="row">
+
+	<div class="col-10" style="text-align: center;">
+
+		<h3>Tabla Cursos</h3>
+
+	</div>
+
+	<div class="col-2">
+
+		<div class="offcanvas offcanvas-end" id="agregarCurso">
+
+			<div class="offcanvas-header">
+				<h1 class="offcanvas-title">Agregar curso</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+			</div>
+
+			<div class="offcanvas-body">
+
+				<form action="formcrearcurso" method="post">
+
+					<label for="addNombre">Nombre</label>
+					<input type="text" name="nombre" id="addNombre" class="form-control" required><br>
+
+					<label for="addselect" class="form-label">Etiqueta:</label>
+					<select class="form-select" id="addselect" name="etiqueta">
+						<option value="Marketing Skills">Marketing Skills</option>
+						<option value="Neuro Talentour">Neuro Talentour</option>
+						<option value="Unreal">Unreal</option>
+						<option value="SCE">SCE</option>
+					</select><br>
+
+					<label for="addDura">Duración</label>
+					<input type="number" name="dura" id="addDura" class="form-control"><br>
+
+					<label for="addValo" class="form-label">Valoración:</label>
+					<select class="form-select" id="addValo" name="valo">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><br>
+
+					<label for="addDescrip">Descripción</label>
+					<textarea name="descrip" id="addDescrip" class="form-control" rows="1"></textarea><br>
+
+					<label for="addCompe">Competencias</label>
+					<textarea name="compe" id="addCompe" class="form-control" rows="1"></textarea><br>
+
+					<label for="addDina">Dinámicas</label>
+					<textarea name="dina" id="addDina" class="form-control" rows="1"></textarea><br>
+
+					<label for="addImg">Imagen</label>
+					<textarea name="img" id="addImg" class="form-control" rows="1"></textarea><br>
+
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="checkbox" id="addVisibilidad" name="visibilidad" value="yes" unchecked>
+						<label class="form-check-label" for="addVisibilidad">Visibilidad</label>
+					</div>
+
+					<button type="submit" class="btn btn-lg btn-primary">
+						Agregar
+					</button><br><br>
+
+				</form>
+
+			</div>
+		</div>
+
+		<button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregarCurso">
+			Agregar
+		</button>
+
+	</div>
+
+</div>
+
+<div class="row">
+
+	<div
+		class="col-3">{# <label for="myInput" class="form-label" style="color: white">|</label>
+																																										        <select class  ="form-control" name="state" id="maxRows">
+																																										            <option value="5">5</option>
+																																										            <option value="10" selected>10</option>
+																																										            <option value="15">15</option>
+																																										            <option value="20">20</option>
+																																										            <option value="50">50</option>
+																																										            <option value="70">70</option>
+																																										            <option value="100">100</option>
+																																										            <option value="5000">Todas</option>
+																																										        </select> #}
+
+	</div>
+
+	<div class="col-3"></div>
+
+	<div class="col-3">
+
+		<label for="cursoInput" class="form-label" style="color: white">|</label>
+		<input class="form-control" id="cursoInput" type="text" onkeyup="buscarEnCurso()">
+
+	</div>
+
+	<div class="col-3">
+
+		<label for="selectBuscar" class="form-label">Buscar por:</label>
+		<select class="form-select" id="selectBuscar" name="sellistbuscar">
+			<option value="0">Visibilidad</option>
+			<option value="1" selected>Nombre</option>
+			<option value="2">Etiqueta</option>
+		</select>
+
+	</div>
+
+</div>
+
+<div class="table-responsive">
+
+	<table class="table table-striped" id="tablaUsers">
+
+		<thead>
+
+			<tr>
+
+				<th>Visibilidad</th>
+				<th>Nombre</th>
+				<th>Etiqueta</th>
+				<th>Duración</th>
+				<th>Valoración</th>
+				{# <th>Descripción</th>
+				<th>Competencias</th>
+				<th>Dinámicas</th> #}
+				<th>Imagen</th>
+
+			</tr>
+
+		</thead>
+
+		<tbody id="cursoTable">
+
+			{% for curso in cursos %}
+
+				<tr>
+
+					{% if curso.visibilidad == '1' %}
+						<td style="background-color: green; color: white;">Sí</td>
+					{% elseif curso.visibilidad == '0' %}
+						<td style="background-color: #df5537; color: white;">No</td>
+					{% endif %}
+					<td>{{ curso.nombre }}</td>
+					<td>{{ curso.etiqueta }}</td>
+					<td>{{ curso.duracion }}</td>
+					<td>{{ curso.valoracion }}</td>
+					{# <td style="width:50%; height:30%;" >{{ curso.descripcion }}</td>
+					<td>{{ curso.competencias }}</td>
+					<td>{{ curso.dinamicas }}</td> #}
+					<td>{{ curso.imagen }}</td>
+
+					<td>
+						<div class="offcanvas offcanvas-end" id="editar{{ curso.id }}">
+							<div class="offcanvas-header">
+								<h1 class="offcanvas-title">Editar Curso</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+							</div>
+							<div class="offcanvas-body">
+
+								<form action="formeditarcurso" method="post">
+
+									<input type="text" name="id" id="inputid" value="{{ curso.id }}" class="form-control" hidden>
+
+									<label for="inputNombre">Nombre</label>
+									<input type="text" name="nombre" id="inputNombre" value="{{ curso.nombre }}" class="form-control"><br>
+
+									<label for="select" class="form-label">Etiqueta:</label>
+									<select class="form-select" id="select" name="etiqueta">
+										<option value="{{ curso.etiqueta }}">{{ curso.etiqueta }}</option>
+										<option value="Marketing Skills">Marketing Skills</option>
+										<option value="Neuro Talentour">Neuro Talentour</option>
+										<option value="Unreal">Unreal</option>
+										<option value="SCE">SCE</option>
+									</select><br>
+
+									<label for="inputDura">Duración</label>
+									<input type="number" name="dura" id="inputDura" value="{{ curso.duracion }}" class="form-control"><br>
+
+									<label for="inputValo" class="form-label">Valoración:</label>
+									<select class="form-select" id="inputValo" name="valo">
+										<option value="{{ curso.valoracion }}">{{ curso.valoracion }}</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select><br>
+
+									<label for="inputDescrip">Descripción</label>
+									<textarea name="descrip" id="inputDescrip" class="form-control" rows="1">{{ curso.descripcion }}</textarea><br>
+
+									<label for="inputCompe">Competencias</label>
+									<textarea name="compe" id="inputCompe" class="form-control" rows="1">{{ curso.competencias }}</textarea><br>
+
+									<label for="inputDina">Dinámicas</label>
+									<textarea name="dina" id="inputDina" class="form-control" rows="1">{{ curso.dinamicas }}</textarea><br>
+
+									<label for="inputImg">Imagen</label>
+									<textarea name="img" id="inputImg" class="form-control" rows="1">{{ curso.imagen }}</textarea><br>
+
+									{% if curso.visibilidad == 1 %}
+
+										<div class="form-check form-switch">
+											<input class="form-check-input" type="checkbox" id="visibilidad" name="visibilidad" value="yes" checked>
+											<label class="form-check-label" for="visibilidad">Visibilidad</label>
+										</div>
+
+									{% elseif curso.visibilidad == 0 %}
+
+										<div class="form-check form-switch">
+											<input class="form-check-input" type="checkbox" id="visibilidad" name="visibilidad" value="no" unchecked>
+											<label class="form-check-label" for="visibilidad">Visibilidad</label>
+										</div>
+
+									{% endif %}
+
+									<br>
+
+									<button type="submit" class="btn btn-lg btn-primary">
+										Editar
+									</button><br><br>
+
+								</form>
+
+							</div>
+						</div>
+
+						<button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#editar{{ curso.id }}">
+							Editar
+						</button>
+					</td>
+
+					<td>
+						<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#borrar{{ curso.id }}">
+							Borrar
+						</button>
+
+						<div class="modal" id="borrar{{ curso.id }}">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h4 class="modal-title">Borrar usuario</h4>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+									</div>
+
+									<div class="modal-body">
+
+										<form action="formeliminarcurso" method="post">
+
+											<input type="text" name="id" id="inputid" value="{{ curso.id }}" class="form-control" hidden>
+
+											<button type="submit" class="btn btn-lg btn-danger">
+												Borrar
+											</button>
+
+										</form>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+
+					<td>
+						<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#mas{{ curso.id }}">
+							+
+						</button>
+
+						<div class="modal" id="mas{{ curso.id }}">
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h4 class="modal-title">Información extra de curso</h4>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+									</div>
+
+									<div class="modal-body">
+
+										<ul class="nav nav-tabs nav-justified" role="tablist">
+
+											<li class="nav-item">
+												<a class="nav-link active" data-bs-toggle="tab" href="#CB{{ curso.id }}">Comp.Básicas</a>
+											</li>
+
+											<li class="nav-item">
+												<a class="nav-link" data-bs-toggle="tab" href="#CE{{ curso.id }}">Comp.Específicas</a>
+											</li>
+
+											<li class="nav-item">
+												<a class="nav-link" data-bs-toggle="tab" href="#CG{{ curso.id }}">Comp.Generales</a>
+											</li>
+
+											<li class="nav-item">
+												<a class="nav-link" data-bs-toggle="tab" href="#Material{{ curso.id }}">Materiales</a>
+											</li>
+
+											<li class="nav-item">
+												<a class="nav-link" data-bs-toggle="tab" href="#Objetivo{{ curso.id }}">Objetivos</a>
+											</li>
+
+											<li class="nav-item">
+												<a class="nav-link" data-bs-toggle="tab" href="#Tabla{{ curso.id }}">Contenidos</a>
+											</li>
+
+										</ul>
+
+										<div class="tab-content">
+
+											<div id="CB{{ curso.id }}" class="container tab-pane active"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::CBParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+											<div id="CE{{ curso.id }}" class="container tab-pane fade"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::CEParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+											<div id="CG{{ curso.id }}" class="container tab-pane fade"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::CGParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+											<div id="Material{{ curso.id }}" class="container tab-pane fade"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::MatParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+											<div id="Objetivo{{ curso.id }}" class="container tab-pane fade"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::ObjParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+											<div id="Tabla{{ curso.id }}" class="container tab-pane fade"><br>
+
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::TablaParaUnCurso', {idCurso: curso.id}
+                                                )) }}
+
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</td>
+
+				</tr>
+
+			{% endfor %}
+
+		</tbody>
+
+	</table>
+
+	
+
+</div>
+
+<script>
+
+	function buscarEnCurso() {
+
+		var input, filter, table, tr, td, i, selValue, txtValue;
+		input = document.getElementById("cursoInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("cursoTable");
+		tr = table.getElementsByTagName("tr");
+		selValue = document.getElementById("selectBuscar").value;
+
+		for (i = 0; i < tr.length; i++) {
+
+			td = tr[i].getElementsByTagName("td")[selValue];
+
+			if (td) {
+
+				txtValue = td.textContent || td.innerText;
+
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+
+					tr[i].style.display = "";
+
+				} else {
+
+					tr[i].style.display = "none";
+
+				}
+			}
+
+		}
+	}
+
+</script>

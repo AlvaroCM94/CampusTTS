@@ -1,0 +1,283 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+
+        .rectangulo1{
+            display: inline-block;
+            text-align: center;
+            width: 310px;
+            height: 326px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+        }
+
+        .rectangulo2{
+            display: inline-block;
+            text-align: center;
+            width: 310px;
+            height: 155px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+            background-color:#0A72B8;
+        }
+
+        .rectangulo3{
+            display: inline-block;
+            text-align: center;
+            width: 310px;
+            height: 155px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+        }
+
+        .parrafo{
+            top:70px;
+            position: relative;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .b{
+            color: white !important;
+        }
+
+        .icon{
+            margin-top: 17px;
+            width: 55px !important;
+            height: 48px !important;
+            margin-right: 0px !important;
+        }
+
+    </style>
+
+    {{ include('components/navbar.html.twig') }}
+
+    <img src="images/fondos/portadaAcompanamiento.jpg" style="object-fit: cover;width:100%;height:500px" alt=""><br><br><br>
+
+    <div class="container">
+    
+        <h4 style="text-align:center;">Ecosistema Empresarial Inicial</h4><br><br>
+
+        <div class="d-flex justify-content-between flex-wrap">
+
+            <div class="p-2">
+
+                <img src="images/logos/lopesan_hotel_group-brown.png" style="width:150px; height:50px" alt="lopesan hotel group">
+
+            </div>
+
+            <div class="p-2">
+
+                <img src="images/logos/satocan.png" style="width:150px; height:50px" alt="satocan">
+
+            </div>
+
+            <div class="p-2">
+
+                <img src="images/logos/dreamplace.png" style="width:150px; height:50px" alt="dream place">
+
+            </div>
+
+            <div class="p-2">
+
+                <img src="images/logos/hsanroque.png" style="width:150px; height:50px" alt="hospital san roque">
+
+            </div>
+
+            <div class="p-2">
+
+                <img src="images/logos/canaragua.png" style="width:150px; height:50px" alt="canaragua">
+
+            </div>
+
+            <div class="p-2">
+
+                <img src="images/logos/the-hoteles.svg" style="width:150px; height:50px" alt="the hoteles">
+
+            </div>
+
+        </div>
+
+        <br><br><br><br>
+
+        <h4 style="text-align:center;">Acompañamiento de Innovación y Talento</h4><br><br>
+
+        <div class="row">
+
+            <div class="col-xxl-2 col-sm-12">
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2">
+
+                        <div class="rectangulo1">
+
+                            <p style="top:145px; position: relative;">Programas de Talento</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-xxl-10 col-sm-12">
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2">
+
+                        <div class="rectangulo2" data-bs-toggle="modal" data-bs-target="#myModa">
+
+                            <h5 class="parrafo" style="top: 55px;"><b class="b">Programa de reLead - Digital Heart</b></h5>
+
+                        </div>
+
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <img class="img-fluid" src="images/fondos/portadaAcompanamiento.jpg" alt="">
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 45px;">Acompañamiento regular y personalizado en dinámicas participativas</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 45px;">A los equipos directivos y mandos en conocimientos y competencias para la transformación </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2">
+
+                        <div class="rectangulo2">
+
+                            <h5 class="parrafo" style="top: 55px;"><b class="b">Programa de Mapa e Itinerarios de Talento</b></h5>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 55px;">Diseño a medida, entreno y seguimiento del talento organizado</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 55px;">Personalizado o en equipos de alto rendimiento, para la transformacion</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="row">
+
+            <div class="col-xxl-2 col-sm-12">
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 65px;">Programas de Innovacion</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-xxl-10 col-sm-12">
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2">
+
+                        <div class="rectangulo2">
+
+                            <h5 class="parrafo" style="top: 55px;"><b class="b">Programa de Retos y Corporate Venture Builder</b></h5>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 45px;">Seguimiento permanente de problemas y retos para la creación de spin offs a medida</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-2">
+
+                        <div class="rectangulo3">
+
+                            <p class="parrafo" style="top: 55px;">Dinamizando el PMW y el equipo emprendedor</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

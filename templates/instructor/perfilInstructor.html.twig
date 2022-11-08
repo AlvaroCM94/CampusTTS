@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+    <div class="container" style="text-align: center;">
+        <h2>Alumnos activos</h2>
+    </div>
+    
+    <div class="d-flex p-2 flex-wrap justify-content-around">
+        
+        {% for alumnos in alumnosAux %}
+
+            {% if estados[loop.index - 1][0]["estado"] != "6 Finalizado" %}
+
+                {% for alumno in alumnos %}
+                    {% set idAux = alumno.id %}
+                    {% set nombreAux = alumno.nombre %}
+                    {% set alumnoAux = [alumno.id, alumno.nombre, alumno.email] %}
+                    {% set estadosAux = estados %}
+
+                    {{ render(controller(
+                        'App\\Controller\\WebController::infoAlumno' , {id: idAux, nombre: nombreAux, alumno: alumnoAux, estados: estadosAux},
+                    )) }}
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <div class="container" style="text-align: center;">
+        <h2>Alumnos finalizados</h2>
+    </div>
+
+    <div class="d-flex p-2 flex-wrap justify-content-around">
+        
+        {% for alumnos in alumnosAux %}
+
+            {% if estados[loop.index - 1][0]["estado"] == "6 Finalizado" %}
+
+                {% for alumno in alumnos %}
+                    {% set idAux = alumno.id %}
+                    {% set nombreAux = alumno.nombre %}
+                    {% set alumnoAux = [alumno.id, alumno.nombre, alumno.email] %}
+                    {% set estadosAux = estados %}
+
+                    {{ render(controller(
+                        'App\\Controller\\WebController::infoAlumno' , {id: idAux, nombre: nombreAux, alumno: alumnoAux, estados: estadosAux},
+                    )) }}
+
+                {% endfor %}
+
+            {% endif %}
+
+            
+        {% endfor %}
+    </div>
+
+{% endblock %}

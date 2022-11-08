@@ -1,0 +1,1204 @@
+<style>
+
+    .step {
+        position: relative;
+        min-height: 1em;
+        color: gray;
+    }
+
+    .title {
+        line-height: 1.5em;
+        font-weight: bold;
+    }
+
+    .caption {
+        font-size: 0.8em;
+    }
+
+    .step + .step {
+        margin-top: 1.5em
+    }
+
+    .step > div:first-child {
+        position: static;
+        height: 0;
+    }
+
+    .step > div:not(:first-child) {
+        margin-left: 1.5em;
+        padding-left: 1em;
+    }
+
+    .circle {
+        background: gray;
+        position: relative;
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5em;
+        border-radius: 100%;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 0 0 3px #fff;
+    }
+
+    .circleLast {
+        background: gray;
+        position: relative;
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5em;
+        border-radius: 100%;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 0 0 3px #fff;
+    }
+
+    .circle:after {
+        content: ' ';
+        position: absolute;
+        display: block;
+        top: 1px;
+        right: 50%;
+        bottom: 1px;
+        left: 50%;
+        height: 100%;
+        width: 1px;
+        transform: scale(1, 2);
+        transform-origin: 50% -100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        z-index: -1;
+    }
+
+    .step:last-child .circle:after {
+        display: none
+    }
+
+    .step.step-active {
+        color: #4285f4
+    }
+
+    .step.step-active .circle {
+        background-color: #4285f4;
+    }
+
+    .step.step-active .circleLast {
+        background-color: #4285f4;
+    }
+
+</style>
+
+{% if info == '0 Curso sin pasos'%}
+{% elseif info == '1 Video, cuestionario y cita' %}
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">1</div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">2</div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">3</div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '2.1 Espera de confirmacion de la cita' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">2</div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">3</div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '2.2 Espera de neuroevaluación y cuestionarios' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">2</div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">3</div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '2.3 Espera de informe de estilos de comportamiento' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">2</div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">3</div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '3 Video explicativo de resultados' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">3</div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Ninguna reserva)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Emp. reservada)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Asert. reservada)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (HabCom. reservada)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Emp. y Asert reservadas)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Emp. y HabCom reservadas)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Asert. y HabCom reservadas)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '4 Training (Todas las reservas)' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">4</div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '5 Talleres' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+ 
+    <div class="step step-active">
+
+        <div>
+            <div class="circle">5</div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle">6</div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% elseif info == '6 Finalizado' %}
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Cuestionario inicial y cita</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">NeuroEvaluación e informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Explicación del informe</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Training</div>
+        </div>
+
+    </div>
+
+    <div class="step">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Talleres</div>
+        </div>
+
+    </div>
+
+    <div class="step step-active">
+
+        <div>
+            <div class="circle"><i class="fa fa-check"></i></div>
+        </div>
+
+        <div>
+            <div class="title">Acreditación</div>
+        </div>
+
+    </div>
+
+{% endif %}
+
+<br>
+ 

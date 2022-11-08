@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+    <br><div class="container">
+
+        <ul class="nav nav-tabs justify-content-center" role="tablist">
+  
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#Usuarios">Usuarios</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#Cursos">Cursos</a>
+            </li>
+            
+        </ul>
+
+        <div class="tab-content">
+        
+            <div id="Usuarios" class="container tab-pane active"><br>
+
+                {{ render(controller(
+                    'App\\Controller\\WebController::adminPanelUsuario'
+                )) }}
+
+            </div>
+            
+            <div id="Cursos" class="container tab-pane fade"><br>
+                {{ render(controller(
+                    'App\\Controller\\WebController::adminPanelCurso'
+                )) }}
+            </div>
+            
+        </div>
+
+        {# <div class="row">
+
+            <div class="col-1">
+
+                <div class="d-flex align-items-start">
+
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-usuarios-tab" data-bs-toggle="pill" data-bs-target="#v-pills-usuarios"  role="tab" aria-controls="v-pills-usuarios" aria-selected="true">Usuarios</button>
+                        <button class="nav-link" id="v-pills-cursos-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cursos" role="tab" aria-controls="v-pills-cursos" aria-selected="false">Cursos</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-11">
+
+                <div class="d-flex align-items-start">
+
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                        <div class="tab-pane fade show active" id="v-pills-usuarios" role="tabpanel" aria-labelledby="v-pills-usuarios-tab">
+
+                            {{ render(controller(
+                                'App\\Controller\\WebController::adminPanelUsuario'
+                            )) }}
+
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-cursos" role="tabpanel" aria-labelledby="v-pills-cursos-tab">
+                            contenido de otro aqui
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            </div>
+        
+        </div> #}
+
+    </div>
+
+{% endblock %}

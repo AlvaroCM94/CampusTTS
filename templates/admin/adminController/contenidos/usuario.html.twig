@@ -1,0 +1,492 @@
+<div class="row">
+
+    <div class="col-10" style="text-align: center;">
+
+        <h3>Tabla Usuarios</h3>
+    
+    </div>
+
+    <div class="col-2">
+
+        <div class="offcanvas offcanvas-end" id="agregar">
+
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title">Agregar Usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+
+                <h3>Contraseña aleatoria:</h3>
+                <h5 class="contraRandom"></h5>
+                <hr>
+
+                <form action="formcrearuser" method="post">
+
+                    <label for="inputNombre">Nombre y Apellidos</label>
+                    <input type="text" name="nombre" id="inputNombre" class="form-control" required><br>
+
+                    <label for="inputEmail">Email</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control" required><br>
+
+                    <label for="inputPassword">Contraseña</label>
+                    <input type="text" name="password" id="inputPassword" class="form-control" required><br>
+
+                    <label for="inputRol">Rol</label>
+                    <select type="text" name="rol" id="inputRol" class="form-control" required>
+                        <option value="ROLE_USER">Usuario</option>
+                        <option value="ROLE_INSTRUCTOR">Instructor</option>
+                        <option value="ROLE_ADMIN">Administrador</option>
+                    </select><br>
+
+                    <label for="inputTlf">Teléfono</label>
+                    <input type="text" name="tlf" id="inputTlf" class="form-control" required><br>
+
+                    <label for="inputDNI">DNI</label>
+                    <input type="text" name="dni" id="inputDNI" class="form-control" required><br>
+
+                    <input class="form-check-input" type="checkbox" id="tramitado" name="tramitado" value="yes">
+                    <label class="form-check-label" for="tramitado">Tramitado</label><br>
+
+                    <input class="form-check-input" type="checkbox" id="comunicaciones" name="comunicaciones" value="yes">
+                    <label class="form-check-label" for="comunicaciones">Comunicaciones</label><br>
+
+                    <input class="form-check-input" type="checkbox" id="procesar_almacenar_datos" name="procesar_almacenar_datos" value="yes">
+                    <label class="form-check-label" for="procesar_almacenar_datos">Datos</label><br><br>
+
+                    <button type="submit" class="btn btn-lg btn-primary"> Agregar </button><br><br>
+
+                </form>
+
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregar" onclick="generarContra()">
+            Agregar
+        </button>
+
+    </div>
+
+</div>
+
+<div class="table-responsive-xxl">
+    <table class="table table-striped" id="tablaUsers">
+
+        <div class="row">
+
+            <div class="col-6"></div>
+
+            <div class="col-3">
+
+                <label for="myInput" class="form-label" style="color: white">|</label>
+                <input class="form-control" id="myInput" type="text" onkeyup="buscarEnUser()">
+
+            </div>
+
+            <div class="col-3">
+
+                <label for="select" class="form-label">Buscar por:</label>
+                <select class="form-select" id="select" name="sellist1">
+                    <option value="0">Tramitado</option>
+                    <option value="1">Solicita</option>
+                    <option value="2" selected>Nombre-Apellidos</option>
+                    <option value="3">Email</option>
+                    <option value="4">Teléfono</option>
+                    <option value="5">DNI</option>
+                    <option value="6">Rol</option>
+                    <option value="7">Interes</option>
+                    <option value="8">Comunicaciones</option>
+                    <option value="9">Datos</option>
+                    <option value="10">Género</option>
+                    <option value="11">Jerarquía</option>
+                    <option value="12">Área funcional</option>
+                    
+                </select>
+        
+            </div>
+
+        </div>
+
+        <thead>
+
+            <tr>
+
+                <th>Tramitado</th>
+                <th>Solicita</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>DNI</th>
+                <th>Rol</th>
+                <th>Interes</th>
+                <th>Comunicaciones</th>
+                <th>Datos</th>
+                <th>Género</th>
+                <th>Jerarquía</th>
+                <th>Área_funcional</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="myTable">
+
+            {% for usuario in usuarios %}
+
+                <tr>
+
+                    {% if usuario.tramitado == '1' %}
+                        <td style="background-color: green; color: white;">Sí</td>
+                    {% elseif usuario.tramitado == '0' %}
+                        <td style="background-color: #df5537; color: white;">No</td>
+                    {% endif %}
+
+                    <td>
+                        {% if usuario.info_inscripcion == 'info' %}
+                            Información
+                        {% elseif usuario.info_inscripcion == 'inscripcion' %}
+                            Inscribirse
+                        {% endif %}
+                    </td>
+
+                    <td>{{ usuario.nombre }}</td>
+                    <td><a href = "mailto: {{ usuario.email }}">{{ usuario.email }}</a></td>
+                    <td>{{ usuario.telefono }}</td>
+                    <td>{{ usuario.dni }}</td>
+                    <td>
+                        {% if usuario.roles == '["ROLE_ADMIN"]' %}
+                            Admin
+                        {% elseif usuario.roles == '["ROLE_INSTRUCTOR"]' %}
+                            Instructor
+                        {% elseif usuario.roles == '["ROLE_USER"]' %}
+                            Alumno
+                        {% endif %}
+                    </td>
+
+                    <td>{{ usuario.areas_interes }}</td>
+
+                    {% if usuario.comunicaciones == '1' %}
+                        <td style="background-color: green; color: white;">Sí</td>
+                    {% elseif usuario.comunicaciones == '0' %}
+                        <td style="background-color: #df5537; color: white;">No</td>
+                    {% endif %}
+
+                    {% if usuario.procesar_almacenar_datos == '1' %}
+                        <td style="background-color: green; color: white;">Sí</td>
+                    {% elseif usuario.procesar_almacenar_datos == '0' %}
+                        <td style="background-color: #df5537; color: white;">No</td>
+                    {% endif %}
+
+                    <td>{{ usuario.genero }}</td>
+                    <td>{{ usuario.jerarquia }}</td>
+                    <td>{{ usuario.funcional }}</td>
+
+                    <td>
+                        <div class="offcanvas offcanvas-end" id="editar{{ usuario.id }}" >
+                            <div class="offcanvas-header">
+                                <h1 class="offcanvas-title">Editar Usuario</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                            </div>
+                            <div class="offcanvas-body">
+
+                                <h3>Contraseña aleatoria:</h3>
+                                <h5 id="contraRandom{{ usuario.id }}" class="contraRandom"></h5>
+                                <hr>
+
+                                <form action="formeditaruser" method="post">
+
+                                    <input type="text" name="id" id="inputid" value="{{ usuario.id }}" class="form-control" hidden>
+
+                                    <label for="inputNombre">Nombre y Apellidos</label>
+                                    <input type="text" name="nombre" id="inputNombre" value="{{ usuario.nombre }}" class="form-control"><br>
+
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" name="email" id="inputEmail" value="{{ usuario.email }}" class="form-control"><br>
+
+                                    <label for="inputPassword">Contraseña</label>
+                                    <input type="password" name="password" id="inputPassword" value="" class="form-control"><br>
+
+                                    <label for="inputTlf">Teléfono</label>
+                                    <input type="text" name="tlf" id="inputTlf" value="{{ usuario.telefono }}" class="form-control"><br>
+
+                                    <label for="inputDNI">DNI</label>
+                                    <input type="text" name="dni" id="inputDNI" value="{{ usuario.dni }}" class="form-control"><br>
+
+                                    {% if usuario.tramitado == 1 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="tramitado" name="tramitado" value="yes" checked>
+                                            <label class="form-check-label" for="tramitado">Tramitado</label>
+                                        </div>
+
+                                    {% elseif usuario.tramitado == 0 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="tramitado" name="tramitado" value="no" unchecked>
+                                            <label class="form-check-label" for="tramitado">Tramitado</label>
+                                        </div>
+
+                                    {% endif %}
+
+                                    <br>
+
+                                    {% if usuario.comunicaciones == 1 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="comunicaciones" name="comunicaciones" value="yes" checked>
+                                            <label class="form-check-label" for="comunicaciones">Comunicaciones</label>
+                                        </div>
+
+                                    {% elseif usuario.comunicaciones == 0 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="comunicaciones" name="comunicaciones" value="no" unchecked>
+                                            <label class="form-check-label" for="comunicaciones">Comunicaciones</label>
+                                        </div>
+
+                                    {% endif %}
+
+                                    <br>
+
+                                    {% if usuario.procesar_almacenar_datos == 1 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="procesar_almacenar_datos" name="procesar_almacenar_datos" value="yes" checked>
+                                            <label class="form-check-label" for="procesar_almacenar_datos">Datos</label>
+                                        </div>
+
+                                    {% elseif usuario.procesar_almacenar_datos == 0 %}
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="procesar_almacenar_datos" name="procesar_almacenar_datos" value="no" unchecked>
+                                            <label class="form-check-label" for="procesar_almacenar_datos">Datos</label>
+                                        </div>
+
+                                    {% endif %}
+
+                                    <br>
+
+                                    <button type="submit" class="btn btn-lg btn-primary"> Editar </button><br><br>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#editar{{ usuario.id }}" onclick="generarContra()">
+                            Editar
+                        </button>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#borrar{{ usuario.id }}">
+                            Borrar
+                        </button>
+
+                        <div class="modal" id="borrar{{ usuario.id }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Borrar usuario</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <form action="formeliminaruser" method="post">
+
+                                            <input type="text" name="id" id="inputid" value="{{ usuario.id }}" class="form-control" hidden>
+
+                                            <button type="submit" class="btn btn-lg btn-danger"> Borrar </button>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#mas{{ usuario.id }}">
+                            +
+                        </button>
+
+                        <div class="modal" id="mas{{ usuario.id }}">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Información extra de usuario</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <ul class="nav nav-tabs nav-justified" role="tablist">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#Cursos{{ usuario.id }}">Cursos</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#Extra{{ usuario.id }}">Información Extra</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#Reservas{{ usuario.id }}">Reservas</a>
+                                            </li>
+
+                                            {% if usuario.roles == '["ROLE_INSTRUCTOR"]' %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#Alumnos{{ usuario.id }}">Alumnos</a>
+                                                </li>
+                                            {% elseif usuario.roles == '["ROLE_USER"]' %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#Instructor{{ usuario.id }}">Instructor</a>
+                                                </li>
+                                            {% endif %}
+
+                                        </ul>
+
+                                        <div class="tab-content">
+
+                                            <div id="Cursos{{ usuario.id }}" class="container tab-pane active"><br>
+
+                                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#inscribir{{ usuario.id }}">Inscribir en un curso</button><br>
+                                                
+                                                <div class="collapse" id="inscribir{{ usuario.id }}">
+                                                    
+                                                    <form action="forminscribiruser" method="post">
+
+                                                        <input type="text" name="id" id="inputid" value="{{ usuario.id }}" class="form-control" hidden>
+
+                                                        <label for="inputRol">Curso</label>
+                                                        <select type="text" name="curso" id="curso" class="form-control" required>
+                                                            {% for SCurso in allCursos %}
+                                                                <option value="{{ SCurso.id }}">{{ SCurso.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+
+                                                        <label for="tipo">Tipo</label>
+
+                                                        <div class="form-check">
+                                                            <input type="radio" class="form-check-input" id="conPasos" name="tipo" value="CON">
+                                                            <label class="form-check-label" for="conPasos">Con pasos</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" class="form-check-input" id="sinPasos" name="tipo" value="SIN">
+                                                            <label class="form-check-label" for="sinPasos">Sin pasos</label>
+                                                        </div><br>
+
+                                                        <button type="submit" class="btn btn-lg btn-success"> Inscribir </button>
+
+                                                    </form>
+
+                                                </div><br>
+
+                                                <h3>Cursos realizados por este usuario</h3>
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::cursosParaUnUser', {idUser: usuario.id}
+                                                )) }}
+
+                                            </div>
+
+                                            <div id="Extra{{ usuario.id }}" class="container tab-pane fade"><br>
+                                                <h3>Información custionario 2</h3>
+                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                {# {{ render(controller(
+                                                    'App\\Controller\\WebController::extraParaUnUser', {idUser: usuario.id}
+                                                )) }} #}
+                                            </div>
+
+                                            <div id="Reservas{{ usuario.id }}" class="container tab-pane fade"><br>
+                                                <h3>Reservas</h3>
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::reservasParaUnUser', {idUser: usuario.id}
+                                                )) }}
+                                            </div>
+
+                                            <div id="Alumnos{{ usuario.id }}" class="container tab-pane fade"><br>
+                                                <h3>Alumnos</h3>
+                                                {{ render(controller(
+                                                    'App\\Controller\\WebController::alumnosDeUnInstructor', {idUser: usuario.id}
+                                                )) }}
+                                            </div>
+
+                                            <div id="Instructor{{ usuario.id }}" class="container tab-pane fade"><br>
+                                                <h3>Instructor</h3>
+                                                {# {{ render(controller(
+                                                    'App\\Controller\\WebController::instructorDeUnAlumno', {idUser: usuario.id}
+                                                )) }} #}
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+    let characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-';
+    let contrasena = '';
+    let tam = characters.length;
+    let i = 0;
+
+    function generarContra(){
+        contrasena = '';
+        for (i = 0; i < 20; i++) {
+            contrasena += characters.charAt(Math.floor(Math.random() * tam));
+        }
+
+        const elements = document.getElementsByClassName('contraRandom');
+        Array.from(elements).forEach(element => element.innerHTML = contrasena);
+
+    }
+
+    function buscarEnUser(){
+
+        var input, filter, table, tr, td, i, selValue, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tablaUsers");
+        tr = table.getElementsByTagName("tr");
+        selValue = document.getElementById("select").value;
+
+        for(i = 0; i < tr.length; i++){
+
+            td = tr[i].getElementsByTagName("td")[selValue];
+
+            if(td){
+
+                txtValue = td.textContent || td.innerText;
+
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+
+                    tr[i].style.display = "";
+
+                }else{
+
+                    tr[i].style.display = "none";
+
+                }
+            }
+            
+        }
+    }
+
+</script>

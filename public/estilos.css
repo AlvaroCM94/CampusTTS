@@ -1,0 +1,83 @@
+@font-face {
+    font-family: Acumin;
+    src: url('/fuente/AcuminVariableConcept.otf');
+}
+
+* {
+    color: #0A72B8;
+    font-family: Acumin;
+    /* overflow-x: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden; */
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.btn-primary{
+    background-color: #0A72B8 !important;
+    border-color: #0A72B8 !important;
+}
+
+#ColumnaIzqCurso {
+    box-shadow: 5px -44px 33px #0A72B8;
+    z-index: -1;
+}
+
+b{
+    text-align:start;
+}
+
+#ColumnaDerCurso {
+    text-align: justify;
+    /* overflow-x: hidden;
+    overflow-y: hidden;
+    height: 65vh;
+    overflow-y: scroll;
+    scrollbar-color: #0A72B8 white;
+    scrollbar-width: thin; */
+}
+
+b{
+    text-align:unset;
+}
+
+.fa-star{
+    color: black;
+}
+
+.starChecked {
+    color: #0A72B8;
+}
+
+/* @media only screen and (max-width: 1231px) {
+    .tts {
+        padding-right: 100px;
+    }
+
+    .ulpgc {
+        margin-left: 100px;
+    }
+} */
+
+/******************************************** PARA CHROME ***************************************/
+
+/* ::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0A72B8;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #094e7c;
+} */
+
+/******************************************** PARA CHROME ***************************************/

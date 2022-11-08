@@ -1,0 +1,85 @@
+<div class="p-2">
+    <div class="card" style="width: 250px;">
+        <div class="card-body">
+            <p data-bs-toggle="collapse" data-bs-target="#alumno{{ alumno[0] }}">{{ alumno[1] }}</p>
+            <div class="collapse" id="alumno{{ alumno[0] }}">
+
+                {% for cursos in cursosAux %}
+                    {% for curso in cursos %}
+                        <a href = "mailto: {{ alumno[2] }}">{{ alumno[2] }}</a>
+                        <h4>Curso:</h4>
+                        <p>{{ curso.nombre }}</p>
+                        
+                        {% for cursoAlumno in cursosAlumnos %}
+                            {% if curso.id == cursoAlumno.id_curso_id %}
+                                <h4>Estado:</h4>
+                                <p>{{ cursoAlumno.estado }}</p>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for reservasAlumno in reservasAlumnos %}
+                            {% if reservasAlumno.fecha <= date() and curso.id == reservasAlumno.id_curso_id %}
+                                <h4>Reserva:</h4>
+                                <p>{{ reservasAlumno.fecha }}</p>
+                            {% endif %}
+                        {% endfor %}
+
+                        <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#modal{{ curso.id }}-{{ idAlumno }}" 
+                            style="background-color: #0A72B8 !important; border-color: #0A72B8 !important;" >Modificar</button>
+
+                        <div class="modal" id="modal{{ curso.id }}-{{ idAlumno }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">{{ nombre }} - {{ curso.nombre }}</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>Cambiar estado</p>
+
+                                    <form action="modificarEstado" method="post">
+                                        <select class="form-select" id="estado" name="estado">
+                                            <option>0 Curso sin pasos</option>
+                                            <option>1 Video, cuestionario y cita</option>
+                                            <option>2.1 Espera de confirmacion de la cita</option>
+                                            <option>2.2 Espera de neuroevaluación y cuestionarios</option>
+                                            <option>2.3 Espera de informe de estilos de comportamiento</option>
+                                            <option>3 Video explicativo de resultados</option>
+                                            <option>4 Training (Ninguna reserva)</option>
+                                            <option>4 Training (Emp. reservada)</option>
+                                            <option>4 Training (Asert. reservada)</option>
+                                            <option>4 Training (HabCom. reservada)</option>
+                                            <option>4 Training (Emp. y Asert reservadas)</option>
+                                            <option>4 Training (Emp. y HabCom reservadas)</option>
+                                            <option>4 Training (Asert. y HabCom reservadas)</option>
+                                            <option>4 Training (Todas las reservas)</option>
+                                            <option>5 Talleres</option>
+                                            <option>6 Finalizado</option>
+                                        </select>
+
+                                        <input type="hidden" type="text" name="id" id="id" class="form-control" value="{{idAlumno}}">
+                                        <input type="hidden" type="text" name="idCurso" id="idCurso" class="form-control" value="{{curso.id}}">
+
+                                        <button type="submit" class="btn btn-lg btn-primary"> Modificar estado </button>
+                                    </form>
+                                    
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>

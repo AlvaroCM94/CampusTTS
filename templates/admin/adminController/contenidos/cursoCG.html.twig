@@ -1,0 +1,80 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addCG{{ idCurso }}">Añadir Competencia General</button><br>
+                                                
+<div class="collapse" id="addCG{{ idCurso }}">
+    
+    <form action="addcgcurso" method="post">
+
+        <input type="text" name="id" id="inputid" value="{{ idCurso }}" class="form-control" hidden>
+
+        <label for="inputDesc">Texto</label>
+        <textarea class="form-control" rows="5" id="inputDesc" name="desc" required></textarea><br>
+
+        <button type="submit" class="btn btn-lg btn-success"> Añadir </button>
+
+    </form>
+
+</div><br>
+
+{% if cgs == null %}
+
+    <p>Este curso no tiene competencias generales.</p>
+
+{% else %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cg in cgs %}
+                <tr>
+                    <td>{{ cg.descripcion }}</td>
+
+                    <td>
+
+                        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#editCG{{ cg.id }}">Editar</button><br><br>
+                                                
+                        <div class="collapse" id="editCG{{ cg.id }}">
+                            
+                            <form action="editcgcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ cg.id }}" class="form-control" hidden>
+
+                                <label for="inputDesc">Texto</label>
+                                <textarea class="form-control" rows="5" id="inputDesc" name="desc" required>{{ cg.descripcion }}</textarea><br>
+
+                                <button type="submit" class="btn btn-lg btn-warning"> Editar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#deleteCG{{ cg.id }}">Eliminar</button><br><br>
+                                                
+                        <div class="collapse" id="deleteCG{{ cg.id }}">
+                            
+                            <form action="deletecgcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ cg.id }}" class="form-control" hidden>
+
+                                <button type="submit" class="btn btn-lg btn-danger"> Eliminar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+

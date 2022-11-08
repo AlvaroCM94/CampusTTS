@@ -1,0 +1,45 @@
+{# <form action="editar" method="post">
+    <button type="submit" class="btn btn-primary">Editar usuario</button>
+</form> #}
+
+<div class="offcanvas offcanvas-end" id="editar">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Cambiar contraseña</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+
+        <h3>Contraseña sugerida</h3>
+        <h5 id="contraRandom"></h5>
+
+        <script>
+
+            let characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-';
+            let contraseña = '';
+            var tamaño = characters.length;
+            for (let i = 0; i < 20; i++) {
+                contraseña += characters.charAt(Math.floor(Math.random() * tamaño));
+            }
+
+            document.getElementById("contraRandom").innerHTML = contraseña;
+
+        </script>
+
+        <form action="formeditar" method="post">
+
+            <label for="inputEmail">Email</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" required><br>
+
+            <label for="inputPassword">Contraseña</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" required><br>
+
+            <button type="submit" class="btn btn-lg btn-primary"> Cambiar </button><br><br>
+
+        </form>
+
+    </div>
+</div>
+
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#editar">
+    Cambiar contraseña
+</button>

@@ -1,0 +1,87 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addCont{{ idCurso }}">Añadir Contenido</button><br>
+                                                
+<div class="collapse" id="addCont{{ idCurso }}">
+    
+    <form action="addcontcurso" method="post">
+
+        <input type="text" name="id" id="inputid" value="{{ idCurso }}" class="form-control" hidden>
+
+        <label for="inputTitulo">Título</label>
+        <input type="text" name="titulo" id="inputTitulo" class="form-control" required><br>
+
+        <label for="inputDesc">Texto</label>
+        <textarea class="form-control" rows="5" id="inputDesc" name="desc" required></textarea><br>
+
+        <button type="submit" class="btn btn-lg btn-success"> Añadir </button>
+
+    </form>
+
+</div><br>
+
+{% if tcs == null %}
+
+    <p>Este curso no tiene tabla de contenidos.</p>
+
+{% else %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tc in tcs %}
+                <tr>
+                    <td>{{ tc.titulo }}</td>
+                    <td>{{ tc.descripcion }}</td>
+                    <td>
+
+                        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#editCont{{ tc.id }}">Editar</button><br><br>
+                                                
+                        <div class="collapse" id="editCont{{ tc.id }}">
+                            
+                            <form action="editcontcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ tc.id }}" class="form-control" hidden>
+
+                                <label for="inputTitulo">Título</label>
+                                <input type="text" name="titulo" id="inputTitulo" value="{{ tc.titulo }}" class="form-control" required><br>
+
+                                <label for="inputDesc">Texto</label>
+                                <textarea class="form-control" rows="5" id="inputDesc" name="desc" required>{{ tc.descripcion }}</textarea><br>
+
+                                <button type="submit" class="btn btn-lg btn-warning"> Editar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#deleteCont{{ tc.id }}">Eliminar</button><br><br>
+                                                
+                        <div class="collapse" id="deleteCont{{ tc.id }}">
+                            
+                            <form action="deletecontcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ tc.id }}" class="form-control" hidden>
+
+                                <button type="submit" class="btn btn-lg btn-danger"> Eliminar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+

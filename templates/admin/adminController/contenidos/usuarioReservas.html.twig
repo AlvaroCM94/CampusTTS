@@ -1,0 +1,39 @@
+{% if reservas == null %}
+
+    <p>No ha realizado ninguna reserva.</p>
+    
+{% else %}
+
+    <table class="table table-striped" style="text-align: center;">
+
+        <tbody>
+
+            <tr>
+
+                <td style="color: #0A72B8 !important;">
+
+                    {% for reserva in reservas %}
+                        {% for fecha in reserva %}
+                            {{ fecha }}
+                        {% endfor %}
+                    {% endfor %}
+
+                </td>
+
+                <td style="color: #0A72B8 !important;">
+
+                    {% for lugar in lugares %}
+                        {% for nombre in lugar %}
+                            {{ nombre }}
+                        {% endfor %}
+                    {% endfor %}
+                    
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+{% endif %}

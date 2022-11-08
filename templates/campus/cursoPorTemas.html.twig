@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{# {% set current_path = app.request.get('nombreCurso') %} #}
+
+{% block title %}{{ app.request.get('nombreCurso') }}{% endblock %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+
+    {% for c in curso  %}
+
+        {% set imagen = c.imagen|split('/d/') %}
+        {% set imgFin = '' %}
+
+        {% for i in imagen %}
+            
+            {% if i != "https://drive.google.com/file" %}
+            
+                {% set imgFin = i|split('/view') %}
+                <img src="https://drive.google.com/uc?export=view&id={{ imgFin[0] }}" alt="{{ c.nombre }} imagen" style="object-fit: cover;width:100%; height:300px">
+            
+            {% endif %}
+
+        {% endfor %}
+
+        <div class="container">
+            <br><br>
+
+            <h1 style="text-align: center">{{ c.nombre }}</h1><br>
+
+            <h2>Material</h2>
+
+            <hr>
+            
+            {% set idAux = c.id %}
+            {{ render(controller(
+                'App\\Controller\\WebController::info', {id: idAux}
+            )) }}
+
+        </div>
+
+    {% endfor %}
+
+
+    {# {% set nombre = app.request.get('nombreCurso') %}
+
+    {% if nombre != "" %}
+
+        {{ render(controller(
+            'App\\Controller\\WebController::infoCurso', {nombreC: nombre}
+        )) }}
+
+    {% else %}
+
+        {{ render(controller(
+            'App\\Controller\\WebController::infoCurso', {nombreC: curso.nombre}
+        )) }}
+        
+    {% endif %} #}
+
+{% endblock %}

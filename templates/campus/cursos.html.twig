@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Travel Tech Skills{% endblock %}
+
+{% block body %}
+{# {{ component('navbar') }} #}
+    {{ include('components/navbar.html.twig') }}
+
+    <div class="d-flex p-2 flex-wrap justify-content-around">
+        {% for cursos in cursosAux %}
+            {% for curso in cursos %}
+            
+                <div class="p-2">
+                    <div class="card " style="width:400px;">
+
+                        {% set imagen = curso.imagen|split('/d/') %}
+                        {% set imgFin = '' %}
+
+                        {% for i in imagen %}
+
+                            {% if i != "https://drive.google.com/file" %}
+
+                                {% set imgFin = i|split('/view') %}
+                                <img id="i1" class="card-img-top" src="https://drive.google.com/uc?export=view&id={{ imgFin[0] }}" alt="{{ curso.nombre }} imagen" style="width:100%; height:250px;">
+                            
+                            {% endif %}
+
+                        {% endfor %}
+
+                        <div class="card-body">
+
+                            <h4 class="card-title">{{ curso.nombre }}</h4>
+                            <p class="card-text">{{ curso.duracion }} Horas | 
+                                {% if curso.valoracion == '0' %}
+                                    <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '1' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '2' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '3' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '4' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span>
+                                {% else %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span>
+                                {% endif %}
+                            </p>
+
+                            {% set nombreCurso = curso.nombre %}
+                            <form action="Curso" method="post">
+                                <input type="text" name="id" id="inputid" value="{{ curso.id }}" class="form-control" hidden>
+                                <input type="text" name="etiqueta" id="inputetiqueta" value="{{ curso.etiqueta }}" class="form-control" hidden>
+
+                                <button type="submit" class="btn btn-lg btn-primary">Explorar</button>
+                            </form>
+                            {# <a href="{{ path('Curso', {nombreCurso} ) }}" class="btn btn-primary">Explorar</a> #}
+
+                        </div>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

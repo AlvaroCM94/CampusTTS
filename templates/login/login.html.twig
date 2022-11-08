@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceder{% endblock %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+    <div class="container">
+
+        <div class="row">
+
+            <img src="/images/fondos/NTTLogin.png" alt="Logo NTT login" style="height: 200px; width: 325px; display: block; margin-left: auto; margin-right: auto;"><br><br>
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="d-flex justify-content-center mb-3">
+                <form method="post">
+                
+                    <label for="email" style="text-align:left;">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ last_username }}"/><br><br>
+
+                    <label for="password" style="text-align:left;">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password"/><br><br>
+
+                    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> #}
+                    {# If you want to control the URL the user is redirected to on success
+                    <input type="hidden" name="_target_path" value="/account"/> #}
+
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-primary">Acceder</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+
+{% endblock %}

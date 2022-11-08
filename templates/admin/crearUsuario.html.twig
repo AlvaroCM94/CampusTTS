@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alta{% endblock %}
+
+{% block body %}
+
+    <form action="formalta" method="post">
+
+        <div class="container">
+
+            <h3 style="text-align:center;">Registrar nuevo usuario</h3>
+
+            <div class="row">
+
+                <div class="col-sm-3"></div>
+
+                <div class="col-sm-6">
+
+                    <label for="inputEmail">Email</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control" required><br>
+
+                    <label for="inputPassword">Contraseña</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required><br>
+
+                    <label for="inputRol">Rol</label>
+                    <select type="text" name="rol" id="inputRol" class="form-control" required>
+                        <option value="ROLE_USER">Usuario</option>
+                        <option value="ROLE_INSTRUCTOR">Instructor</option>
+                        <option value="ROLE_ADMIN">Administrador</option>
+                    </select><br>
+
+                    <button type="submit" class="btn btn-lg btn-primary"> Registrar </button><br><br>
+                    
+                </div>
+
+                <div class="col-sm-3"></div>
+
+            </div>
+
+        </div>
+    
+    </form>
+
+    <div class="container" style="text-align:center;">
+
+        <a href="/admin?crudAction=index&crudControllerFqcn=App\Controller\Admin\UsuarioCrudController&menuIndex=0&signature=rIQ1KTFnCZbuD1X6XAobVWz4WBjElofPpvQjaBN_ECM&submenuIndex=-1" class="btn btn-primary">Volver</a>
+    
+    </div>
+
+    
+
+{% endblock %}

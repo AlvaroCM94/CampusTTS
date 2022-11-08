@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% set current_path = app.request.get('curso') %}
+
+{% block title %}{{ current_path['nombre'] }}{% endblock %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+    {% set imagen = current_path['imagen']|split('/d/') %}
+        {% set imgFin = '' %}
+
+        {% for i in imagen %}
+            
+            {% if i != "https://drive.google.com/file" %}
+            
+                {% set imgFin = i|split('/view') %}
+                <img src="https://drive.google.com/uc?export=view&id={{ imgFin[0] }}" alt="{{ current_path['nombre'] }} imagen" style="object-fit: cover;width:100%; height:300px">
+            
+            {% endif %}
+
+        {% endfor %}
+
+    {# <div class="d-flex "> #}
+
+        <div class="row">
+
+            {# <div class="col-sm-1">
+            </div> #}
+
+            <div class="col-sm-10" id="ColumnaDerCurso">
+                <div class="container">
+                    <br><br>
+
+                    {% set idAux = current_path['id'] %}
+
+                    <h1>{{ current_path['nombre'] }}</h1>
+                    {% set auxs = current_path['descripcion']|split('\r\n') %}
+                    {% for aux in auxs %}
+
+                        <p>{{ aux }}</p>
+                    
+                    {% endfor %}
+
+                    <h3>Competencias</h3>
+                    {% set auxs = current_path['competencias']|split('\r\n') %}
+                    {% for aux in auxs %}
+
+                        <p>{{ aux }}</p>
+                    
+                    {% endfor %}
+
+                    <h4>Objetivos</h4>
+                    {{ render(controller(
+                        'App\\Controller\\WebController::objetivos' , {id: idAux}
+                        
+                    )) }}
+
+                    <h4>Competencias básicas</h4>
+                    {{ render(controller(
+                        'App\\Controller\\WebController::competenciasBasicas' , {id: idAux}
+                        
+                    )) }}
+
+                    <h4>Competencias generales</h4>
+                    {{ render(controller(
+                        'App\\Controller\\WebController::competenciasGenerales' , {id: idAux}
+                        
+                    )) }}
+
+                    <h4>Competencias específicas</h4>
+                    {{ render(controller(
+                        'App\\Controller\\WebController::competenciasEspecificas' , {id: idAux}
+                        
+                    )) }}
+
+                    <h3>Dinámicas</h3>
+                    {% set auxs = current_path['dinamicas']|split('\r\n') %}
+                    {% for aux in auxs %}
+
+                        <p>{{ aux }}</p>
+                        
+                    {% endfor %}
+
+                    <h3>Tabla de contenidos</h3>
+                    
+
+                    {# <hr>
+
+                    <h1>Tareas</h1> #}
+
+                </div>
+            </div>
+
+            {# <div class="col-sm-1">
+            </div> #}
+
+            <div class="col-sm-2" id="ColumnaIzqCurso" style="z-index: -1; box-shadow: 5px -25px 20px #0A72B8;">
+                <div class="sticky-top">
+                    <p><b>Duración: </b> {{ current_path['duracion'] }} horas</p>
+                    <p><b>Valoración: </b> {{ current_path['valoracion'] }}/5</p>
+
+                    {% if current_path['visibilidad'] == '1'%}
+
+                        <p><b>¡Ya puedes reservar tu plaza!</b></p>
+
+                    {% else %}
+
+                        <p><b>Este curso se impartirá pronto, pide mas informcaión en la sección de contacto.</b></p>
+
+                    {% endif %}
+                    
+                </div>
+            </div>
+
+        </div>
+
+    {# </div> #}
+
+    {# <p>{{ current_path['nombre'] }}</p> #}
+
+    {# {% for dato in current_path %}
+        <p>{{ current_path['nombre'] }}</p>
+        <p>{{ dato }}</p>
+    {% endfor %} #}
+
+    {# <p>{{ app.request.get('curso') }}</p> #}
+    
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

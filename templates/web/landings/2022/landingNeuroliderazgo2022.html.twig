@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Curso Neuroliderazo{% endblock %}</title>
+        <link rel="icon" href="images/icons/TTS_favicon.png" alt="TTS favicon">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        {# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> #}
+        
+        
+
+        <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COpen+Sans:400,700,800&display=swap" rel="stylesheet" type="text/css">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('estilos.css') }}">
+
+            <!-- Vendor CSS -->
+            <link rel="stylesheet" href="/vendorPorto/bootstrap/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/vendorPorto/fontawesome-free/css/all.min.css">
+            <link rel="stylesheet" href="/vendorPorto/animate/animate.compat.css">
+            <link rel="stylesheet" href="/vendorPorto/simple-line-icons/css/simple-line-icons.min.css">
+            <link rel="stylesheet" href="/vendorPorto/owl.carousel/assets/owl.carousel.min.css">
+            <link rel="stylesheet" href="/vendorPorto/owl.carousel/assets/owl.theme.default.min.css">
+            <link rel="stylesheet" href="/vendorPorto/magnific-popup/magnific-popup.min.css">
+
+            <link rel="stylesheet" href="/cssPorto/theme-elements.css">
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <style>
+
+        @font-face {
+            font-family: Acumin;
+            src: url('/fuente/AcuminVariableConcept.otf');
+        }
+
+        body{
+            font-family: Acumin;
+        }
+
+        p{
+            line-height: -1px;
+        }
+
+        #primerflex{
+            height: 950px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .gfg {
+            width:auto;
+            text-align:center;
+            padding:20px;
+        }
+
+        .texto1izquierda{
+            /*font-size: 67px;*/
+            font-size: clamp(1rem, -0.875rem + 8.333333vw, 4.18rem);
+            font-weight: 600;
+            top: -800px;
+            position: relative;
+            left: 41px;
+            margin-bottom: -8px;
+            color: white;
+        }
+
+    
+        .texto2izquierda{
+            font-size: 32px;
+            top: -734px;
+            position: relative;
+            left: 41px;
+            margin-bottom: 11px;
+            color: white
+        }
+
+        .texto3izquierda{
+            font-size: 60px;
+            font-weight: 600;
+            top: -709px;
+            position: relative;
+            left: 41px;
+            margin-bottom: -26px;
+            color: white;
+        }
+
+        .texto1derecha{
+            font-size: 35px;
+            font-weight: 600;
+            top: 135px;
+            position: relative;
+            left: 41px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .titulo1{
+            font-size: 35px;
+        }
+
+        .textogeneral1{
+            font-size: 31px;
+        }
+
+        .aladerecha{
+            position: relative;
+            left: 145px;
+        }
+
+        .gafas2{
+            background: url('images/landings/NL2022/08_persona_gafas2.png') no-repeat;
+            background-size: contain;
+        }
+
+        .scroll-to-top{
+            visibility: hidden !important;
+        }
+
+    </style>
+
+    <body>
+        {% block body %}
+
+
+            <div class="fixed-top" style="padding-top: 5px;padding-left: 5px;padding-right: 5px;background-color: #98bad6; height: 72px">
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class="d-inline-flex mb-3">
+                            <a href="https://www3.gobiernodecanarias.org/empleo/portal/web/sce"><img src="images/landings/NL2022/logoGobiernoCanarias.jpg" style="width: 150px; height: 60px;" alt="logo Gobierno Canarias"></a>
+                            <a href="https://www.ulpgc.es/"><img src="images/landings/NL2022/logo_ulpgc_vertical_acronimo_azul.png" style="width: 70px; height: 60px;" alt="logo ULPG"></a>
+                            <a href=""><img src="images/landings/NL2022/logo_Canarias_Living_Lab.png" style="width: 150px; height: 60px;" alt="logo Spain Living Lab"></a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <h4 style="text-align: center;">Formación en competencias de liderazgo mediante realidad virtual</h4>
+                    </div>
+
+                    <div class="col">
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href=""> <img src="images/landings/NL2022/02_inscríbete.png" alt="Boton inscribete"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="d-flex" id="primerflex" style="background-color: #0A72B8">
+                <div class="p-2 flex-fill">
+                    <img class="img-fluid" src="images/landings/NL2022/01_persona_gafas.png" alt="persona con gafas" style="position: relative; left: 153px; heig">
+                    <p class="texto1izquierda">Formación en</p>
+                    <p class="texto1izquierda">Competencias de</p>
+                    <p class="texto1izquierda">Liderazgo mediante</p>
+                    <p class="texto1izquierda">Realidad Virtual</p>
+
+                    <p class="texto2izquierda">Entrenamiento y evaluación por</p>
+                    <p class="texto2izquierda">realidad virtual de habilidades de </p>
+                    <p class="texto2izquierda">liderazgo. Sistema pionero:</p>
+                    
+                    <p class="texto3izquierda">¡entrena y aprende jugando!</p>
+                </div>
+
+                <div class="p-2 flex-fill">
+                    <span class="anim-hover-scale-1-2 transition-3ms d-inline-block">
+                        <p class="texto1derecha">¿Comunicas bien?</p>
+                        <p class="texto1derecha">¿Qué tipo de líder eres?</p>
+                        <p class="texto1derecha">¿Sabes gestionar los cambios?</p>
+                        <p class="texto1derecha" style="margin-bottom: 0px;">¿Quieres mejorar tu estilo de</p>
+                        <p class="texto1derecha">liderazgo?</p>
+                        <p class="texto1derecha" style="margin-bottom: 0px;">¡Evalúate y entrena tus habilidades de</p>
+                        <p class="texto1derecha">liderazgo con realidad virtual!</p>
+                        
+                        <p class="texto1derecha">100% Gratuito 
+                            <a href="">
+                                <img src="images/landings/NL2022/03_inscríbete_plano.png" alt="Boton inscribete" style="width: 150px; height: 60px;">
+                            </a>
+                        </p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+
+                <div class="col-sm-3">
+                    <img class="img-fluid" src="images/landings/NL2022/04_descripción.png" alt="descripción" style="width: 350px; height: 100px; left: -52px; position: relative;">
+                    <p style="font-size: 30px;left: 75px;position: relative;">
+                        Este curso te ayudará a
+                        conocerte, evaluarte y entrenar
+                        tus soft skills (habilidades
+                        blandas) de liderazgo, mediante
+                        neuroevaluación,
+                        entrenamiento, talleres
+                        presenciales y entornos de
+                        realidad virtual.
+                        Al finalizar, conseguirás un
+                        <b>certificado de curso por la
+                        Universidad de Las Palmas de
+                        Gran Canaria.</b>
+                    </p>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="parallax parallax-mouse" data-plugin-parallax data-plugin-options="{'mouseParallax': true}">
+                        <img class="img-fluid parallax-mouse-object" data-value="-8" src="images/landings/NL2022/05_RV_pantalla.png" alt="pantalla rv" style="height: 700px;width: 4500px; position: relative; left: 75px;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="background-color: white">
+
+                <div class="col-sm-6" style="text-align:center">
+                    <img src="images/landings/NL2022/06_ULPGC_naranja.png" alt="Logo ULPGC" style="width: 400px; height: 400px;">
+                    <p style="font-size: 30px; position: relative; top: -275px;">
+                        <b>
+                            Certificado de formación<br>
+                            por la Universidad de Las<br>
+                            Palmas de Gran Canaria.
+                        </b>
+                    </p>
+                </div>
+
+                <div class="col-sm-6" style="text-align:center">
+                    <img src="images/landings/NL2022/07_ciencia_naranja.png" alt="Logo ciencia" style="width: 255px; height: 255px; position: relative; top: 73px;">
+                    <p style="font-size: 30px; position: relative; top: -105px;">
+                        <b>
+                            Sistema de evaluación<br>
+                            validado científicamente
+                        </b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="gafas2">
+
+                <div class="row">
+                    <div class="col-sm-4" style="text-align:center">
+                        <h4 class="titulo1">Neuroevaluación:</h4><br>
+                        <p class="textogeneral1">
+                            Clasificación de tus<br>
+                            comportamientos<br>
+                            específicos, intra e<br>
+                            interpersonales y estilo de<br>
+                            liderazgo con REALIDAD<br>
+                            VIRTUAL.<br>
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4" style="text-align:center">
+                        <h4 class="titulo1">Entrenamiento:</h4><br>
+                        <p class="textogeneral1">
+                            Entrenamiento de tus<br>
+                            capacidades: aprendizaje<br>
+                            explícito, juegos serios y<br>
+                            entrenamiento con<br>
+                            REALIDAD VIRTUAL.
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4" style="text-align:center">
+                        <h4 class="titulo1">Talleres presenciales:</h4><br>
+                        <p class="textogeneral1">
+                            Dos talleres grupales para<br>
+                            poner en práctica lo<br>
+                            aprendido, bajo la<br>
+                            dirección de un experto en<br>
+                            la materia.
+                        </p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="titulo1 aladerecha">Dirigido a:</h4><br>
+                        <p class="textogeneral1 aladerecha">
+                            Todas aquellas personas mayores de edad<br>
+                            residentes en las Islas Canarias que deseen<br>
+                            entrenar sus habilidades de liderazgo, utilizando<br>
+                            las tecnologías más avanzadas.
+                        </p>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <h4 class="titulo1 aladerecha">Qué necesitas</h4><br>
+                        <p class="textogeneral1 aladerecha">
+                            Necesitarás acceso a internet y muchas ganas de<br>
+                            entrenar tus habilidades de liderazgo. ¡Nosotros<br>
+                            ponemos el resto!<br>
+                            *No se necesitan conocimientos previos.
+                        </p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="col-sm-3" style="text-align:center">
+                        <img src="images/landings/NL2022/09_calendario.png" alt="" style="height: 85px; width: 85px;"><br>
+                        <p class="textogeneral1">
+                            Duración:<br>
+                            3 semanas
+                        </p>
+                    </div>
+
+                    <div class="col-sm-3" style="text-align:center">
+                        <img src="images/landings/NL2022/10_maestro.png" alt="" style="height: 85px; width: 85px;"><br>
+                        <p class="textogeneral1">
+                            Asesoramiento<br>
+                            personalizado
+                        </p>
+                    </div>
+
+                    <div class="col-sm-3" style="text-align:center">
+                        <img src="images/landings/NL2022/11_monedas.png" alt="" style="height: 85px; width: 85px;"><br>
+                        <p class="textogeneral1">
+                            100%<br>
+                            gratuito
+                        </p>
+                    </div>
+
+                    <div class="col-sm-3" style="text-align:center">
+                        <img src="images/landings/NL2022/12_reloj.png" alt="" style="height: 85px; width: 85px;"><br>
+                        <p class="textogeneral1">
+                            Flexibilidad<br>
+                            horaria
+                        </p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="col-sm-3"></div>
+
+                    <div class="col-sm-2" style="text-align:center">
+                        <div class="counters">
+                            <h1 data-to="50" data-append="+">0</h1><br>
+                            <p class="textogeneral1">
+                                Personas<br>
+                                evaluadas
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" style="text-align:center">
+                        <div class="counters">
+                            <h1 data-to="10" data-append="+">0</h1><br>
+                            <p class="textogeneral1">
+                                Empresas
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" style="text-align:center">
+                        <div class="counters">
+                            <h1 data-to="20" data-append="+">0</h1><br>
+                            <p class="textogeneral1">
+                                Cursos<br>
+                                impartidos
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3"></div>
+                </div>
+
+            </div>
+
+            <br><br><br>
+
+            <div class="">
+                {# <div id="particles-1"></div> #}
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img class="img-fluid" src="images/landings/NL2022/13_fechas.png" alt="fechas" style="width: 350px; height: 100px; left: -52px; position: relative;">
+                        <p class="textogeneral1">
+                            Podrás elegir la fecha de inicio que<br>
+                            más se adecúe a tus necesidades:
+                        </p>
+
+                        <ul style="text-align: center; list-style-position: inside;">
+                            <li class="textogeneral1">05 de septiembre</li>
+                            <li class="textogeneral1">12 de septiembre</li>
+                            <li class="textogeneral1">19 de septiembre</li>
+                            <li class="textogeneral1">26 de septiembre</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-sm-7">
+                        <img class="img-fluid" src="images/landings/NL2022/14_ubicación.png" alt="ubicación" style="width: 350px; height: 100px; left: -52px; position: relative;">
+                        <p class="textogeneral1">
+                            Las sesiones presenciales serán en el Travel<br>
+                            Tech School by Amadeus, en el Campus de<br>
+                            Tafira de la ULPGC:
+                        </p>
+
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="850" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=28.07583072154543,-15.451207825318885&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                </iframe>
+                                <style>.mapouter{
+                                    position:relative;
+                                    text-align:right;
+                                    height:400px;
+                                    width:850px;
+                                    }
+                                </style>
+                                <a href="https://www.embedgooglemap.net">google maps html</a>
+                                <style>.gmap_canvas {
+                                    overflow:hidden;
+                                    background:none!important;
+                                    height:400px;
+                                    width:850px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <br><br><br>
+
+                <div class="row">
+                    <img class="img-fluid" src="images/landings/NL2022/15_contenido.png" alt="contenido" style="width: 350px; height: 100px; left: -52px; position: relative;">
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+
+                    <div class="p-2">
+                        <div class="d-flex justify-content-center mb-3">
+
+                            <img class="img-fluid" src="images/landings/NL2022/16_numero1.png" alt="numero1" style="width: 100px; height: 100px;">
+                        
+                            <p class="textogeneral1" style="">
+                                Neuroevaluación:<br>
+                                Se evalúan las<br>
+                                capacidades de liderazgo<br>
+                                de cada individuo en un<br>
+                                entorno de realidad<br>
+                                virtual, que evalúa y<br>
+                                clasifica los<br>
+                                comportamientos<br>
+                                específicos, habilidades<br>
+                                intra e interpersonales y<br>
+                                estilos de liderazgo del<br>
+                                participante.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="p-2">
+                        <div class="d-flex justify-content-center mb-3">
+
+                            <img class="img-fluid" src="images/landings/NL2022/17_numero2.png" alt="numero2" style="width: 100px; height: 100px;">
+                        
+                            <p class="textogeneral1" style="">
+                                Entrenamiento:<br>
+                                Se plantea una base teórica de<br>
+                                las capacidades a entrenar, y<br>
+                                se entrena, de forma<br>
+                                individual, mediante juegos<br>
+                                serios y entornos de realidad<br>
+                                virtual:<br>
+                                
+                                Pensamiento lógico<br>
+                                Flexibilidad cognitiva<br>
+                                Pensamiento divergente<br>
+
+                                Empatía<br>
+                                Asertividad<br>
+                                Habilidades comunicativas
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="p-2">
+                        <div class="d-flex justify-content-center mb-3">
+
+                            <img class="img-fluid" src="images/landings/NL2022/18_numero3.png" alt="numero3" style="width: 100px; height: 100px;">
+                        
+                            <p class="textogeneral1" style="">
+                                Taller grupal:<br>
+                                Los participantes<br>
+                                recibirán las claves para<br>
+                                mejorar en sus relaciones<br>
+                                interpersonales,<br>
+                                fundamentalmente las<br>
+                                orientadas al desempeño<br>
+                                de su puesto de trabajo.
+                            </p>
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div style="color: #0A72B8;">
+
+            </div>
+
+            <script src="/vendorPorto/plugins/js/plugins.min.js"></script>
+            <script src="/vendorPorto/particles/particles.min.js"></script>
+
+            <script src="/jsPorto/theme.js"></script>
+            <script src="/jsPorto/theme.init.js"></script>
+            <script src="/jsPorto/examples.particles.js"></script>
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{% if cursos == null %}
+
+    <p>No se ha inscrito en ningún curso.</p>
+
+{% else %}
+
+    {% for curso in cursos %}
+        {% for nombre in curso %}
+            <p>{{ nombre }}</p>
+        {% endfor %}
+    {% endfor %}
+
+{% endif %}
+

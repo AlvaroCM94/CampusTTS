@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citas{% endblock %}
+
+{% block body %}
+    {{ include('components/navbar.html.twig') }}
+
+    <div class="container">
+
+        {% if app.user.roles[0] == "ROLE_INSTRUCTOR" %}
+
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                
+                    <script>
+                        let cont = 1;
+                    </script>
+
+                    {% for reserva in reservas %}
+                        <p style="display:none;" id="fecha{{ loop.index }}">{{ reserva.fecha }}</p>
+
+                        <tr id="tr{{ loop.index }}">
+                            <td>{{ alumnos[loop.index - 1][0]["nombre"] }}</td>
+                            <td>{{ reserva.fecha }}</td>
+                            <td>{{ reserva.tipo }}</td>
+                        </tr>
+
+                        <script>
+                            function getyesterday() {
+                                date = new Date();
+                                mes = date.getMonth() + 1;
+                                date.setDate(date.getDate() - 1);
+                                fecha = date.toString();
+                                fechaSplit = fecha.split(" ");
+
+                                fechaRes = fechaSplit[3] + "-" + mes + "-" + fechaSplit[2] + " " + fechaSplit[4];
+
+                                id = "fecha" + cont;
+                                tr = "tr" + cont;
+                                cont++;
+
+                                if(Date.parse(document.getElementById(id).innerHTML) < Date.parse(fechaRes)){
+                                    document.getElementById(tr).style.backgroundColor  = "red";
+                                }
+                            }
+
+                            getyesterday();
+
+                        </script>
+                        
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        {% elseif app.user.roles[0] == "ROLE_ADMIN" %}
+
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <script>
+                        let cont = 1;
+                    </script>
+
+                    {% for reserva in reservas %}
+                        <p style="display:none;" id="fechaA{{ loop.index }}">{{ reserva.fecha }}</p>
+
+                        <tr id="trA{{ loop.index }}">
+                            <td>{{ alumnos[loop.index - 1][0]["nombre"] }}</td>
+                            <td>{{ reserva.fecha }}</td>
+                            <td>{{ reserva.tipo }}</td>
+
+                            <td>
+                                <div class="offcanvas offcanvas-end" id="editar{{ reserva.id }}" >
+                                    <div class="offcanvas-header">
+                                        <h1 class="offcanvas-title">Editar reserva</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+
+                                        <h3>Contraseña aleatoria:</h3>
+                                        <h5 id="contraRandom{{ reserva.id }}" class="contraRandom"></h5>
+                                        <hr>
+
+                                        <form action="formeditarreserva" method="post">
+
+                                            <input type="text" name="id" id="inputid" value="{{ reserva.id }}" class="form-control" hidden>
+
+                                            <label for="hora" style="text-aling: center;">Hora</label>
+                                            <div class='row'>
+
+                                                <div class='col-sm-6'>
+
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radiohora1" name="hora1radio" value="09:00">
+                                                        <label class="form-check-label" for="radiohora1">9:00</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radiohora2" name="hora1radio" value="11:00">
+                                                        <label class="form-check-label" for="radiohora2">11:00</label>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class='col-sm-6'>
+
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radiohora3" name="hora1radio" value="13:00">
+                                                        <label class="form-check-label" for="radiohora3">13:00</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radiohora4" name="hora1radio" value="15:00">
+                                                        <label class="form-check-label" for="radiohora4">15:00</label>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <label for="fecha">Día</label>
+                                            <input type="date" name="fecha" id="fecha" class="form-control" required>
+
+                                            <br>
+
+                                            <button type="submit" class="btn btn-lg btn-primary"> Editar </button><br><br>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#editar{{ reserva.id }}">
+                                    Editar
+                                </button>
+                            </td>
+
+                            <td>
+                                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#borrar{{ reserva.id }}">
+                                    Borrar
+                                </button>
+
+                                <div class="modal" id="borrar{{ reserva.id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Borrar reserva</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                                <form action="formeliminarreserva" method="post">
+
+                                                    <input type="text" name="id" id="inputid" value="{{ reserva.id }}" class="form-control" hidden>
+
+                                                    <button type="submit" class="btn btn-lg btn-danger"> Borrar </button>
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <script>
+                            function getyesterday() {
+                                date = new Date();
+                                mes = date.getMonth() + 1;
+                                date.setDate(date.getDate() - 1);
+                                fecha = date.toString();
+                                fechaSplit = fecha.split(" ");
+
+                                fechaRes = fechaSplit[3] + "-" + mes + "-" + fechaSplit[2] + " " + fechaSplit[4];
+
+                                id = "fechaA" + cont;
+                                tr = "trA" + cont;
+                                cont++;
+
+                                if(Date.parse(document.getElementById(id).innerHTML) < Date.parse(fechaRes)){
+                                    document.getElementById(tr).style.backgroundColor  = "red";
+                                }
+                            }
+
+                            getyesterday();
+
+                        </script>
+                        
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

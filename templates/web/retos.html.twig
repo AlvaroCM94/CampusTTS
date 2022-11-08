@@ -1,0 +1,389 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+
+        .circuloAzul{
+            background-color: #0A72B8;
+            display: inline-block;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            position: relative;
+            left: -10px;
+            top: -30px;
+        }
+
+        .rectangulo{
+            display: inline-block;
+            text-align: justify;
+            width: 400px;
+            height: 160px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+        }
+
+        .icon{
+            margin-top: 17px;
+            width: 55px !important;
+            height: 48px !important;
+            margin-right: 0px !important;
+        }
+
+        .parrafoRetos{
+            margin-left: 40px;
+            margin-right: 40px;
+            top: -20px;
+            position: relative;
+        }
+
+        .rectangulosSecundarios{
+            display: inline-block;
+            text-align: center;
+            width: 295px;
+            height: 100px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+        }
+
+        .rectangulosInvisible{
+            display: inline-block;
+            text-align: justify;
+            width: 295px;
+            height: 100px;
+            border-radius: 15px;
+        }
+
+        .parrafosSecundarios{
+            margin-left: 40px;
+            margin-right: 40px;
+            position: relative;
+            top: 15px;
+        }
+
+    </style>
+
+    {{ include('components/navbar.html.twig') }}
+
+    <img src="images/fondos/portadaRetos.jpg" style="object-fit: cover;width:100%;height:500px" alt=""><br><br><br>
+
+    <div class="container">
+
+        <h4 style="text-align:center;">Startups</h4><br>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <div class="rectangulo">
+                    <span class="rounded-circle circuloAzul">
+                        <img class="icon" src="images/icons/bombilla.svg" alt="">
+                    </span>
+                    <p class="parrafoRetos">Trabajamos sobre retos reales para construir innovaciones y llevarlas al mercado como el venture builder universitario</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <div class="rectangulo">
+                    <span class="rounded-circle circuloAzul">
+                        <img class="icon" src="images/icons/neurona.svg" alt="">
+                    </span>
+                    <p class="parrafoRetos">Basándonos en estos retos, se generan sinergias, construyendo equipos universidad-empresas</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <div class="rectangulo">
+                    <span class="rounded-circle circuloAzul">
+                        <img class="icon" src="images/icons/rueda.svg" alt="">
+                    </span>
+                    <p class="parrafoRetos">Potenciando un ecosistema que se retroalimenta con formaciones y partners</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Problema</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Necesidad de nuevas experiencias de animación a clientes más digitales</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Solución</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Robot de animación para hoteles</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Portfolio actual</h5>
+
+                <div class="rectangulosSecundarios" >
+                    <button type="button" class="btn" id="toastbtn"> <img src="images/icons/robo_ainment.svg" height="30" width="120" alt="robo ainment"/></button>
+                    <p class="parrafosSecundarios">(En desarrollo)</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                
+                <div class="rectangulosInvisible">
+                    <div class="toast toastRoboAinment">
+                        <div class="toast-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+
+                        <div class="toast-body">
+                            <img src="images/fondos/robo_ainment.jpg" style="width:270px; height:520px; border-radius: 15px;" alt="">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <script>
+                document.getElementById("toastbtn").onclick = function() {
+                    var toastElList = [].slice.call(document.querySelectorAll('.toastRoboAinment'))
+                    var toastList = toastElList.map(function(toastEl) {
+                        return new bootstrap.Toast(toastEl)
+                    })
+                    toastList.forEach(toast => toast.show()) 
+                }
+            </script>
+
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Problema</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Cuello de botella en el día a día para empresas ágiles</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Solución</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">App de gestión ágil de peticiones y autorizaciones</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Portfolio actual</h5>
+
+                <div class="rectangulosSecundarios">
+                    <img src="images/icons/give_me_the_ok.svg" height="30" width="120" style="margin-top: 10px;" alt="give me the ok"/>
+                    <p class="parrafosSecundarios">(En desarrollo)</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                
+                <div class="rectangulosInvisible">
+                    <p class="parrafosSecundarios"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br><br><hr><br><br>
+
+    <div class="container">
+
+        <h4 style="text-align:center;">Inventos</h4><br>
+
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Problema</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Poco resguardo de las personas en los patinetes</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Solución</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Protección ante inclemencias climáticas como sol, lluvia y viento</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Portfolio actual</h5>
+
+                <div class="rectangulosSecundarios" >
+                    <button type="button" class="btn" id="Scootergadgets"> <img src="images/icons/Scootergadgets.svg" height="40" width="140" alt="robo ainment"/></button>
+                    <p class="parrafosSecundarios">(Patentado) Cod. U201931937</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                
+                <div class="rectangulosInvisible">
+                    <div class="toast toastScootergadgets">
+                        <div class="toast-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+
+                        <div class="toast-body">
+                            <img src="images/fondos/Scootergadgets.jpg" style="width:270px; height:520px; border-radius: 15px;" alt="">
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <script>
+                document.getElementById("Scootergadgets").onclick = function() {
+                    var toastElList = [].slice.call(document.querySelectorAll('.toastScootergadgets'))
+                    var toastList = toastElList.map(function(toastEl) {
+                        return new bootstrap.Toast(toastEl)
+                    })
+                    toastList.forEach(toast => toast.show()) 
+                }
+            </script>
+
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Problema</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Dolor de cabeza por migrañas</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Solución</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Gorro paliativo que mitigue el dolor</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Portfolio actual</h5>
+
+                <div class="rectangulosSecundarios">
+                    <img src="images/icons/Migrain.svg" height="50" width="120" style="margin-top: 5px;" alt="give me the ok"/>
+                    <p class="parrafosSecundarios">(Patentado) Cod. U202000129</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                
+                <div class="rectangulosInvisible">
+                    <p class="parrafosSecundarios"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Problema</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Movilidad de las personas mayores para tareas diarias</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Solución</h5>
+
+                <div class="rectangulosSecundarios">
+                    <p class="parrafosSecundarios">Andador inteligente y con fondo elevador</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+
+                <h5 style="text-align:center;">Portfolio actual</h5>
+
+                <div class="rectangulosSecundarios">
+                    <img src="images/icons/SmarTaka.svg" height="30" width="120" style="margin-top: 10px;" alt="give me the ok"/>
+                    <p class="parrafosSecundarios">(Patentado) Cod. U201900248</p>
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                
+                <div class="rectangulosInvisible">
+                    <p class="parrafosSecundarios"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br><br><hr><br><br>
+
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

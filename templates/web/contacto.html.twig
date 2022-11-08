@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ include('components/navbar.html.twig') }}
+
+    <style>
+
+        /* Chrome, Safari, Edge, Opera */
+        .number::-webkit-outer-spin-button,
+        .number::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        .number[type=number] {
+            -moz-appearance: textfield;
+        }
+    
+    </style>
+
+    <img src="images/fondos/portadaContacto.jpeg" style="object-fit: cover;width:100%;height:500px" alt=""><br><br><br>
+
+    <form action="contactoForm" method="post">
+
+        <div class="container">
+
+            {# <h4 style="text-align:center;">Registrar nuevo usuario</h4><br> #}
+
+            {% if error != "" %}
+
+                <div class="alert alert-danger" style="text-align:center;">
+                    <strong>{{ error }}</strong>.
+                </div>
+
+            {% endif %}
+
+            <div class="row">
+
+                <div class="col-sm-2"></div>
+
+                <div class="col-sm-8">
+
+                    <h2>Contacta con nosotros</h2><br>
+
+                    <div class="row">
+
+                    <p style="text-align:center">¿Busca información sobre algún curso o inscribirse en uno?</p>
+
+                        <div class="col-md-12 col-xl-4"></div>
+
+                        <div class="col-md-12 col-xl-2">
+
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="info" name="optradio" value="info">
+                                <label class="form-check-label" for="info">Información</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 col-xl-2">
+
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="inscripcion" name="optradio" value="inscripcion">
+                                <label class="form-check-label" for="inscripcion">Inscripción</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 col-xl-4"></div>
+
+                    </div><br>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" required><br>
+                        
+                        </div>
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="apellidos">Apellidos *</label>
+                            <input type="text" name="apellidos" id="apellidos" class="form-control" required><br>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="correo">Correo *</label>
+                            <input type="email" name="correo" id="correo" class="form-control" required><br>
+
+                        </div>
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="telefono">Teléfono *</label>
+                            <input type="number" name="telefono" id="telefono" class="form-control number" required><br>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="dni">DNI *</label>
+                            <input type="text" name="dni" id="dni" class="form-control" required><br>
+
+                        </div>
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="interes">Área de interés *</label>
+                            <select class="form-select" id="interes" name="interes" required>
+                                {% for nombre in cursosActivos %}
+                                    <option value="{{ nombre['nombre'] }}">{{ nombre["nombre"] }}</option>
+                                {% endfor %}
+                            
+                                <option value="Otros">Otros</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="genero">Género *</label>
+                            <select class="form-select" id="genero" name="genero" required>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-12 col-xl-6">
+
+                            <label for="jerarquia">Nivel de Jerarquía *</label>
+                            <select class="form-select" id="jerarquia" name="jerarquia" required>
+                                <option value="Miembro de la Junta o Socio">Miembro de la Junta o Socio</option>
+                                <option value="Alta Dirección o Socio Director">Alta Dirección o Socio Director</option>
+                                <option value="Mandos Intermedios">Mandos Intermedios (al frente de un gran departamento)</option>
+                                <option value="Gestión">Gestión (dirigir un equipo)</option>
+                                <option value="Operador, personal, desempleado, estudiante">Operador, Personal, Desempleado, Estudiante</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-xl-12">
+
+                            <label for="funcional">Área funcional *</label>
+                            <select class="form-select" id="funcional" name="funcional" required>
+                                <option value="Alumno">Alumno</option>
+                                <option value="Cuentas y finanzas">Cuentas y finanzas</option>
+                                <option value="Personal administrativo">Personal administrativo</option>
+                                <option value="Desarrollo y Expansión de Negocios">Desarrollo y Expansión de Negocios</option>
+                                <option value="Ventas comerciales">Ventas comerciales</option>
+                                <option value="Servicio al cliente">Servicio al cliente</option>
+                                <option value="Ingeniería">Ingeniería</option>
+                                <option value="Administración general">Administración general</option>
+                                <option value="Recursos humanos y desarrollo de personas">Recursos humanos y desarrollo de personas</option>
+                                <option value="TI y tecnología">TI y tecnología</option>
+                                <option value="Asesoría legal">Asesoría legal</option>
+                                <option value="Logística y Distribución">Logística y Distribución</option>
+                                <option value="Producción manufacturera">Producción manufacturera</option>
+                                <option value="Mercadeo y Promociones">Mercadeo y Promociones</option>
+                                <option value="En línea y redes sociales">En línea y redes sociales</option>
+                                <option value="Operaciones y Mantenimiento">Operaciones y Mantenimiento</option>
+                                <option value="Relaciones públicas">Relaciones públicas</option>
+                                <option value="Comparas y Suministros">Comparas y Suministros</option>
+                                <option value="Gestión de calidad">Gestión de calidad</option>
+                                <option value="Investigación y desarrollo (I + D + i)">Investigación y desarrollo (I + D + i)</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    
+                    <br><br>
+
+                    <p>Travel Tech School by Amadeus se compromete a proteger y respetar tu privacidad, y solo usaremos tu información personal para administrar tu cuenta y proporcionar los productos y servicios que nos solicitaste. De vez en cuando, nos gustaría ponernos en contacto contigo acerca de nuestros productos y servicios, así como sobre otros contenidos que puedan interesarte. Si aceptas que nos comuniquemos contigo para este fin, marca la casilla a continuación para indicar cómo deseas que nos comuniquemos:</p>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="comunicaciones" required> Acepto recibir otras comunicaciones de Travel Tech School by Amadeus. *
+                    </label>
+
+                    <br><br>
+
+                    <p>Para poder proporcionarte el contenido solicitado, debemos almacenar y procesar tus datos personales. Si aceptas que almacenemos tus datos personales para este fin, marca la casilla de abajo.</p>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="datos" required>Acepto permitir a Travel Tech School by Amadeus almacenar y procesar mis datos personales. *
+                    </label><br><br>
+                    <p>Puedes darte de baja de estas comunicaciones en cualquier momento. Para obtener más información sobre cómo darte de baja, nuestras prácticas de privacidad y cómo nos comprometemos a proteger y respetar tu privacidad, consulta nuestra Política de privacidad.</p>
+
+                    <br><br>
+
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-lg btn-primary"> Enviar </button><br><br><br><br>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-2"></div>
+
+            </div>
+
+        </div>
+    
+    </form>
+
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

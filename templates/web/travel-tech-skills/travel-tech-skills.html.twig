@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Travel Tech Skills{% endblock %}
+
+{% block body %}
+{# {{ component('navbar') }} #}
+    {{ include('components/navbar.html.twig') }}
+
+    <div class="d-flex p-2 flex-wrap justify-content-around">
+        {% for curso in cursos %}
+
+            {% if curso.etiqueta == 'Marketing Skills' and curso.visibilidad == '1' %}
+        
+                <div class="p-2">
+                    <div class="card " style="width:400px;">
+
+                        {% set imagen = curso.imagen|split('/d/') %}
+                        {% set imgFin = '' %}
+
+                        {% for i in imagen %}
+
+                            {% if i != "https://drive.google.com/file" %}
+
+                                {% set imgFin = i|split('/view') %}
+                                <img id="i1" class="card-img-top" src="https://drive.google.com/uc?export=view&id={{ imgFin[0] }}" alt="{{ curso.nombre }} imagen" style="width:100%; height:250px;">
+                            
+                            {% endif %}
+                            
+                        {% endfor %}
+
+                        <div class="card-body">
+
+                            <h4 class="card-title">{{ curso.nombre }}</h4>
+                            <p class="card-text">{{ curso.duracion }} Horas | 
+                                {% if curso.valoracion == '0' %}
+                                    <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '1' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '2' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '3' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+                                {% elseif curso.valoracion == '4' %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star"></span>
+                                {% else %}
+                                    <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span> <span class="fa fa-star starChecked"></span>
+                                {% endif %}
+                            </p>
+                            <a href="{{ path('infoDeCurso', {curso} ) }}" class="btn btn-primary">Explorar</a>
+
+                        </div>
+                    </div>
+                </div>
+                
+            {% endif %}
+        
+        {% endfor %}
+        
+    </div>
+
+    <br>
+
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

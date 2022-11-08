@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+
+        .rectangulo1{
+            display: inline-block;
+            text-align: center;
+            width: 415px;
+            height: 305px;
+            /*box-shadow: 0px 0px 10px #0A72B8;*/
+            border-radius: 15px;
+            background-color:#0A72B8;
+            margin-bottom: 30px;
+        }
+
+        .rectangulo2{
+            display: inline-block;
+            text-align: center;
+            width: 415px;
+            height: 175px;
+            box-shadow: 0px 0px 10px #0A72B8;
+            border-radius: 15px;
+            /*margin-bottom: 15px;*/
+        }
+
+        .white{
+            color: white !important;
+        }
+
+        .icon{
+            margin-top: 20px;
+            width: 100px !important;
+            height: 100px !important;
+            margin-right: 0px !important;
+        }
+
+        .icon2{
+            position: relative;
+            left: -145px;
+            top: 25px;
+            margin-top: 5px;
+            width: 100px !important;
+            height: 100px !important;
+            margin-right: 0px !important;
+        }
+
+    </style>
+
+    {{ include('components/navbar.html.twig') }}
+
+    <img src="images/fondos/portadaInteligencia.jpg" style="object-fit: cover;width:100%;height:500px" alt=""><br><br><br>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xxl-4 col-sm-12">
+
+                <div class="rectangulo1">
+
+                    <img class="icon" src="images/icons/triportation.svg" alt="">
+                    <h5 style="top:35px; position: relative;"><b class="white">Triportation</b></h5>
+                    <p style="top:35px; position: relative;"><b class="white">Solutions for Experience & Customer Intelligence</b></p>
+                    <p class="white" style="top:35px; position: relative;">a brand of TTS by Amadeus</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/microEstrella.svg" alt="">
+                    <h5 style="top:-75px; left: 55px; position: relative;"><b>Módulo de Guest Neuro App</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Asistente inteligente de voz para <br> automatización del proceso de <br> experiencia, con recomendación por IA</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/vrOjo.svg" alt="">
+                    <h5 style="top:-55px; left: 60px; position: relative;"><b>Módulo de entornos virtuales</b></h5>
+                    <p style="top:-55px; left: 129px; position: relative; text-align: left;">Simulación inmersiva RV de <br> instalaciones y servicios</p><p style="opacity:0; margin-top: -17px">|</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/vrUser.svg" alt="">
+                    <h5 style="top:-75px; left: 39px; position: relative;"><b>Módulo de Telepresencia</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Simulación inmersiva RV con dinámica <br> de comunicación y colaboración con <br> avatares reales inteligentes</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/vrLapiz.svg" alt="">
+                    <h5 style="top:-75px; left: 27px; position: relative;"><b>Módulo de Cocreación</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Simulación inmersiva RV con <br> capacidad de modificación y creación <br> por la clientela</p>
+
+                </div>
+            
+            </div>
+
+            <div class="col-xxl-4 col-sm-12">
+
+                <div class="rectangulo1">
+
+                    <img class="icon" src="images/icons/neuro.svg" alt="">
+                    <h5 style="top:35px; position: relative;"><b class="white">Neurotalentour</b></h5>
+                    <p style="top:35px; position: relative;"><b class="white">Solutions for Experience & Customer Intelligence</b></p>
+                    <p class="white" style="top:35px; position: relative;">a brand of TTS by Amadeus</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/microEngranaje.svg" alt="">
+                    <h5 style="top:-75px; left: 43px; position: relative;"><b>Módulo de Job NeuroApp</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Asistente inteligente de voz para <br> automatización de los procesos del <br> personal</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/microBombilla.svg" alt="">
+                    <h5 style="top:-75px; left: 60px; position: relative;"><b>Módulo de Entornos Virtuales</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Simulación inmersiva RV para <br> procesos formativos y de gestión de <br> conocimiento</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/microGorro.svg" alt="">
+                    <h5 style="top:-75px; left: 57px; position: relative;"><b>Módulo de entrenamientos y <br> evaluación</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Simulación inmersiva RV con <br> gamificación de soft skills para entrenar <br> y ser evaluado</p>
+
+                </div>
+                
+            </div>
+            
+            <div class="col-xxl-4 col-sm-12">
+
+                <div class="rectangulo1">
+
+                    <img class="icon" src="images/icons/travel_crystal_ball.svg" alt="">
+                    <h5 style="top:35px; position: relative;"><b class="white">Travel Crystal Ball</b></h5>
+                    <p style="top:35px; position: relative;"><b class="white">Solutions for Experience & Customer Intelligence</b></p>
+                    <p class="white" style="top:35px; position: relative;">a brand of TTS by Amadeus</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/ojoCarro.svg" alt="">
+                    <h5 style="top:-75px; left: 20px; position: relative;"><b>Módulo de Demanda</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Predicción y simulación de demanda</p><p style="opacity:0; margin-top: -17px">|</p><p style="opacity:0; margin-top: -17px">|</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/ojoHoja.svg" alt="">
+                    <h5 style="top:-75px; left: 51px; position: relative;"><b>Módulo de Valor del Cliente</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Predicción y simulación de valor de la <br> clientela, incluyendo variables <br> ambientales</p>
+
+                </div>
+
+                <div class="rectangulo2">
+
+                    <img class="icon2" src="images/icons/ojoNube.svg" alt="">
+                    <h5 style="top:-75px; left: 60px; position: relative;"><b>Módulo de Customer Journey</b></h5>
+                    <p style="top:-75px; left: 129px; position: relative; text-align: left;">Predicción y simulación de <br> comportamiento de la clientela</p>
+
+                </div>
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+    <br><br><br>
+
+    {{ include('components/footer.html.twig') }}
+
+{% endblock %}

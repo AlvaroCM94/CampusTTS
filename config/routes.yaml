@@ -1,3 +1,255 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+
+# home:
+#     path: /
+#     controller: App\Controller\WebController::home
+
+# travel-tech-skills:
+#     path: /travel-tech-skills
+#     controller: App\Controller\WebController::travelTechSkills
+
+# infoDeCurso:
+#     path: /infoDeCurso
+#     controller: App\Controller\WebController::infoDeCurso
+
+# soft-skills:
+#     path: /soft-skills
+#     controller: App\Controller\WebController::softSkills
+
+# retos:
+#     path: /retos
+#     controller: App\Controller\WebController::retos
+
+# acompanamiento:
+#     path: /acompanamiento
+#     controller: App\Controller\WebController::acompanamiento
+
+# solucines-de-inteligencia:
+#     path: /solucines-de-inteligencia
+#     controller: App\Controller\WebController::soluciones
+
+# travel-crystal-ball:
+#     path: /travel-crystal-ball
+#     controller: App\Controller\WebController::travelCrystalBall
+
+# contacto:
+#     path: /contacto
+#     controller: App\Controller\WebController::contacto
+
+contacto:
+    path: /
+    controller: App\Controller\WebController::contacto
+
+contactoForm:
+    path: /contactoForm
+    controller: App\Controller\WebController::contactoForm
+
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+logout:
+    path: /logout
+    methods: GET
+
+botonAltaAdmin:
+    path: /botonAltaAdmin
+    controller: App\Controller\WebController::botonAltaAdmin
+
+alta:
+    path: /alta
+    controller: App\Controller\WebController::alta
+
+formalta:
+    path: /formalta
+    controller: App\Controller\WebController::uploadUser
+
+# editar:
+#     path: /editar
+#     controller: App\Controller\WebController::editar
+
+privacidad:
+    path: /privacidad
+    controller: App\Controller\WebController::privacidad
+
+campusUsuario:
+    path: /campusUsuario
+    controller: App\Controller\WebController::campus
+
+Curso:
+    path: /Curso
+    controller: App\Controller\WebController::curso
+
+perfilInstructor:
+    path: /perfilInstructor
+    controller: App\Controller\WebController::perfilInstructor
+
+modificarEstado:
+    path: /modificarEstado
+    controller: App\Controller\WebController::modificarEstado
+
+reservar:
+    path: /reservar
+    controller: App\Controller\WebController::reservar
+
+
+#
+#
+# LANDING
+#
+#
+
+
+landingNL2022:
+    path: /inscripcionliderazgo
+    controller: App\Controller\WebController::landingNeuroliderazo
+
+#
+#
+# ADMINISTRACION
+#
+#
+
+
+adminPanel:
+    path: /adminPanel
+    controller: App\Controller\WebController::adminPanel
+
+formcrearuser:
+    path: /formcrearuser
+    controller: App\Controller\WebController::crearUser
+
+forminscribiruser:
+    path: /forminscribiruser
+    controller: App\Controller\WebController::inscribirUser
+
+formeditaruser:
+    path: /formeditaruser
+    controller: App\Controller\WebController::editUser
+
+formeliminaruser:
+    path: /formeliminaruser
+    controller: App\Controller\WebController::deleteUser
+
+formcrearcurso:
+    path: /formcrearcurso
+    controller: App\Controller\WebController::crearCurso
+
+formeditarcurso:
+    path: /formeditarcurso
+    controller: App\Controller\WebController::editCurso
+
+formeliminarcurso:
+    path: /formeliminarcurso
+    controller: App\Controller\WebController::deleteCurso
+
+citas:
+    path: /citas
+    controller: App\Controller\WebController::citas
+
+formeditarreserva:
+    path: /formeditarreserva
+    controller: App\Controller\WebController::editReserva
+
+formeliminarreserva:
+    path: /formeliminarreserva
+    controller: App\Controller\WebController::deleteReserva
+
+#Competencia Basica******************************************
+addcbcurso:
+    path: /addcbcurso
+    controller: App\Controller\WebController::addCBParaUnCurso
+
+#Competencia Basica
+editcbcurso:
+    path: /editcbcurso
+    controller: App\Controller\WebController::editCBParaUnCurso
+
+#Competencia Basica
+deletecbcurso:
+    path: /deletecbcurso
+    controller: App\Controller\WebController::deleteCBParaUnCurso
+
+#Competencia Especifica------------------------------------------
+addcecurso:
+    path: /addcecurso
+    controller: App\Controller\WebController::addCEParaUnCurso
+
+#Competencia Especifica
+editcecurso:
+    path: /editcecurso
+    controller: App\Controller\WebController::editCEParaUnCurso
+
+#Competencia Especifica
+deletececurso:
+    path: /deletececurso
+    controller: App\Controller\WebController::deleteCEParaUnCurso
+
+#Competencia General*********************************************
+addcgcurso:
+    path: /addcgcurso
+    controller: App\Controller\WebController::addCGParaUnCurso
+
+#Competencia Especifica
+editcgcurso:
+    path: /editcgcurso
+    controller: App\Controller\WebController::editCGParaUnCurso
+
+#Competencia Especifica
+deletecgcurso:
+    path: /deletecgcurso
+    controller: App\Controller\WebController::deleteCGParaUnCurso
+
+#Materiales-------------------------------------------------------
+addmatcurso:
+    path: /addmatcurso
+    controller: App\Controller\WebController::addMatParaUnCurso
+
+#Materiales
+editmatcurso:
+    path: /editmatcurso
+    controller: App\Controller\WebController::editMatParaUnCurso
+
+#Materiales
+deletematcurso:
+    path: /deletematcurso
+    controller: App\Controller\WebController::deleteMatParaUnCurso
+
+#Objetivos*****************************************************
+addobjcurso:
+    path: /addobjcurso
+    controller: App\Controller\WebController::addObjParaUnCurso
+
+#Objetivos
+editobjcurso:
+    path: /editobjcurso
+    controller: App\Controller\WebController::editObjParaUnCurso
+
+#Objetivos
+deleteobjcurso:
+    path: /deleteobjcurso
+    controller: App\Controller\WebController::deleteObjParaUnCurso
+
+#TablaContenidos------------------------------------------------------
+addcontcurso:
+    path: /addcontcurso
+    controller: App\Controller\WebController::addContParaUnCurso
+
+#TablaContenidos
+editcontcurso:
+    path: /editcontcurso
+    controller: App\Controller\WebController::editContParaUnCurso
+
+#TablaContenidos
+deletecontcurso:
+    path: /deletecontcurso
+    controller: App\Controller\WebController::deleteContParaUnCurso
+
+
+# adminPanelUsuario:
+#     path: /adminPanelUsuario
+#     controller: App\Controller\WebController::adminPanelUsuario
+

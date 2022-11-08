@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+
+        .titulo {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .rounded-circle{
+            display: inline-block;
+            text-align: center;
+            width: 130px;
+            height: 130px;
+            box-shadow: 0px 0px 10px #0A72B8;
+        }
+
+        .icon{
+            margin-top: 23px;
+            width: 55px !important;
+            height: 47px !important;
+            margin-right: 0px !important;
+        }
+
+    </style>
+
+    {{ include('components/navbar.html.twig') }}
+
+    <img src="images/fondos/portadaSoftSkills.jpg" style="object-fit: cover;width:100%;height:500px" alt="">
+
+    <h4 class="titulo">Entrenamiento y Neuroevaluación de Soft Skills</h4>
+
+    <div class="container">
+        <div class="d-flex p-2 flex-wrap justify-content-center justify-content-around">
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image.png" alt="">
+                    <br>
+                    Liderazgo
+                </span>
+            </div>
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image-1.png" alt="">
+                    <br>
+                    Comunicación
+                </span>
+            </div>
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image-2.png" alt="">
+                    <br>
+                    Riesgos
+                </span>
+            </div>
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image-3.png" alt="">
+                    <br>
+                    Orientación al cliente
+                </span>
+            </div>
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image-4.svg" alt="">
+                    <br>
+                    Resposabilidad climática
+                </span>
+            </div>
+
+            <div class="p-2">
+                <span class="rounded-circle">
+                    <img class="icon" src="images/icons/Method-Draw-Image-5.png" alt="">
+                    <br>
+                    Salud
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <h4 class="titulo">Realidad Virtual: entrenamiento y neuroevaluación de soft skill</h4>
+
+    <img src="images/fondos/graficoSoftSkills.png" style="object-fit:cover; width:100%; height:686px" alt="">
+
+    {{ include('components/footer.html.twig') }}
+    
+{% endblock %}

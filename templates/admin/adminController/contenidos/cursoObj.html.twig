@@ -1,0 +1,80 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addObj{{ idCurso }}">Añadir Objetivos</button><br>
+                                                
+<div class="collapse" id="addObj{{ idCurso }}">
+    
+    <form action="addobjcurso" method="post">
+
+        <input type="text" name="id" id="inputid" value="{{ idCurso }}" class="form-control" hidden>
+
+        <label for="inputDesc">Texto</label>
+        <textarea class="form-control" rows="5" id="inputDesc" name="desc" required></textarea><br>
+
+        <button type="submit" class="btn btn-lg btn-success"> Añadir </button>
+
+    </form>
+
+</div><br>
+
+{% if objs == null %}
+
+    <p>Este curso no tiene objetivos.</p>
+
+{% else %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in objs %}
+                <tr>
+                    <td>{{ obj.descripcion }}</td>
+
+                    <td>
+
+                        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#editObj{{ obj.id }}">Editar</button><br><br>
+                                                
+                        <div class="collapse" id="editObj{{ obj.id }}">
+                            
+                            <form action="editobjcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ obj.id }}" class="form-control" hidden>
+
+                                <label for="inputDesc">Texto</label>
+                                <textarea class="form-control" rows="5" id="inputDesc" name="desc" required>{{ obj.descripcion }}</textarea><br>
+
+                                <button type="submit" class="btn btn-lg btn-warning"> Editar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#deleteObj{{ obj.id }}">Eliminar</button><br><br>
+                                                
+                        <div class="collapse" id="deleteObj{{ obj.id }}">
+                            
+                            <form action="deleteobjcurso" method="post">
+
+                                <input type="text" name="id" id="inputid" value="{{ obj.id }}" class="form-control" hidden>
+
+                                <button type="submit" class="btn btn-lg btn-danger"> Eliminar </button>
+
+                            </form>
+
+                        </div><br>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+
