@@ -44,7 +44,7 @@
             <div class="col-sm-2" id="ColumnaIzqCurso" style="z-index: -1; box-shadow: 5px -25px 20px #0A72B8;">
                 <div class="sticky-top">
                     <p><b>Duración: </b> {{ c.duracion }} horas</p>
-                    <p><b>Valoración: </b> {{ c.valoracion }}/5</p>
+                    {# <p><b>Valoración: </b> {{ c.valoracion }}/5</p> #}
                     
                     {{ render(controller(
                         'App\\Controller\\WebController::pasos', {id: idAux}
