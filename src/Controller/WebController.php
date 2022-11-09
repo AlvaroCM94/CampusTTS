@@ -1525,6 +1525,7 @@ class WebController extends AbstractController{
 
             $reservas = $em->getRepository(Reserva::class)->getAllReservasOrdenadas();
 
+            $alumnos = [];
             for ($i = 0; $i < sizeOf($reservas); $i++) {
                 $alumnos[] = $em->getRepository(Usuario::class)->getAlumnosPorId($reservas[$i]['id_usuario_id']);
             }
